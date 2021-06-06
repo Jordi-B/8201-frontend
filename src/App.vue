@@ -6,19 +6,8 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-        <v-navigation-drawer app right flat dark mini-variant permanent expand-on-hover>
-      <v-list>
-        <v-list-item class="px-2">
-
-        </v-list-item>
-        <v-list-item v-for="item in navbarlist" :key="item.route" :to="item.route">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>{{ item.text }}</v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <Sidebar/>
+    <router-view></router-view>
     <v-main>
       <v-container>
       <v-row>
@@ -45,13 +34,15 @@
 <script>
 import peopleList from './components/peopleList';
 import wordsList from './components/WordsList';
+import Sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
 
   components: {
     peopleList,
-    wordsList
+    wordsList,
+    Sidebar
   },
 
   data: () => ({
