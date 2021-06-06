@@ -1,7 +1,7 @@
 <template>
     <v-card class="words-list-card"
-    width="10%"
-    height="90%"
+    width="10vw"
+    height="80vh"
     elevation="11"
     outlined
     >
