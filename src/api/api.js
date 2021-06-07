@@ -10,6 +10,9 @@ export default {
             },
             usersList: async () => {
                 return await axios.get('http://localhost:3000/users');
+            },
+            recentPosts: async () => {
+                return await axios.get('http://localhost:3000/recentPosts');
             }
         }
     }

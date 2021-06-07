@@ -24,5 +24,16 @@
     { "username": "typic213ode", "password": "1223456", "isManager": false },
     { "username": "typicode", "password": "123456", "isManager": true },
     { "username": "typicode", "password": "123456", "isManager": false }
-    ]
+    ],
+
+    "recentPosts": [
+        { "person": { "firstName": "יאיר", "lastName": "כהן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+          "badWords": ["רצח", "דקירה"], "postDate": "2021-10-23T18:25:43.511Z" },
+          { "person": { "firstName": "שוקי", "lastName": "מלמיליאן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+          "badWords": ["מוות"], "postDate": "2021-04-23T18:25:43.511Z" },
+          { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+          "badWords": ["הסתה", "שוד"], "postDate": "2020-04-23T19:25:43.511Z" },
+          { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+          "badWords": ["הסתה", "שוד"], "postDate": "2020-04-23T19:25:43.511Z" }
+        ]
   }
