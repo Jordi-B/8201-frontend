@@ -1,8 +1,9 @@
 <template>
     <div>
         <v-card max-width="20vw"
-        height="80vh"
-        class="listCard">
+        height="90vh"
+        class="listCard"
+        :class="color">
             <p class="text-h3 text-center listTitle">{{listTitle}}</p>
             <div v-for="(per, index) in peopleList" :key=index>
                 <person :somePerson=per></person>
@@ -19,7 +20,8 @@ export default {
     },
     props: {
         peopleList: Array,
-        listTitle: String
+        listTitle: String,
+        color: String
     }
 }
 </script>
@@ -27,6 +29,12 @@ export default {
 <style scoped>
 .listCard {
     background-color: #2a2b38 !important;
+}
+.red {
+    border: 1px solid red;
+}
+.yellow {
+    border: 1px solid yellow;
 }
 .listTitle {
     color: #ffffff;
