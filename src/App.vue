@@ -1,60 +1,100 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+  <v-app class="page">
     <v-main>
-      <HelloWorld/>
+      <v-container>
+      <v-row>
+                <v-col sm="3">
+        </v-col>
+      <v-col
+      sm="3">
+      <peopleList :listTitle="suspect" :peopleList=suspects class="suspect-list"></peopleList>
+      </v-col>
+      <v-col
+      sm="3">
+      <peopleList :listTitle="wanted" :peopleList=wanteds class="wanted-list"></peopleList>
+      </v-col>
+              <v-col
+              sm="3">
+        <wordsList title="מילים" description="מילים לניטור חשוד" :words="['רצח', 'שוד', 'גניבה', 'דקירה', 'סכין', 'מוות']"></wordsList>
+        </v-col>
+      </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import peopleList from './components/peopleList';
+import wordsList from './components/WordsList';
 
 export default {
   name: 'App',
-
   components: {
-    HelloWorld,
+    peopleList,
+    wordsList
   },
 
   data: () => ({
-    //
+    suspects: [
+      {
+        personId: '123456789',
+        first_name: 'ספיר',
+        last_name: 'רוזן',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      },
+      {
+        personId: '777777777',
+        first_name: 'שירה',
+        last_name: 'מוצפי',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      },
+      {
+        personId: '111111111',
+        first_name: 'אוריה',
+        last_name: 'וייס',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      }
+    ],
+    wanteds: [
+     {
+        personId: '123456789',
+        first_name: 'ספיר',
+        last_name: 'רוזן',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      },
+      {
+        personId: '777777777',
+        first_name: 'שירה',
+        last_name: 'מוצפי',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      },
+      {
+        personId: '111111111',
+        first_name: 'אוריה',
+        last_name: 'וייס',
+        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
+      }
+    ],
+    suspect: "חשודים",
+    wanted: "מבוקשים"
   }),
 };
 </script>
+
+<style>
+.page {
+  background-color: #22223b;
+}
+.container {  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: black;
+}
+</style>
