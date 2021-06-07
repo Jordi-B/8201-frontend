@@ -29,7 +29,6 @@ import wordsList from './components/WordsList';
 
 export default {
   name: 'App',
-
   components: {
     peopleList,
     wordsList
