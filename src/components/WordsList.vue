@@ -21,7 +21,7 @@
     
     <v-card class="dialog-card">
         <v-card-title
-        class="headline red lighten-2 dialog-title"
+        class="headline grey dialog-title"
         primary-title
         >
         הינך עומד להוסיף מילה חדשה למילים המנוטרות
@@ -116,6 +116,7 @@ export default {
     background-color: #111633 !important;
     text-align: center;
     border: 2px solid #1e2238 !important;
+    overflow: auto;
 }
 
 .dialog-card {
@@ -148,9 +149,14 @@ export default {
     direction: rtl;
 }
 
+.headline {
+    color: white;
+}
+
 .text-input {
     direction: rtl;
     width: 80%;
     margin-left: 2vh;
 }
+
 </style>
