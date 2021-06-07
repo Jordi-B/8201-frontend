@@ -12,7 +12,7 @@
     <v-card-actions>
         <v-container v-if="wantedButtonStatus">
             <v-row>
-                <h1 class="text-center mx-auto">מבוקש</h1>
+                <h1 class="text-center mx-auto">{{lock_title}}</h1>
             </v-row>
             <v-row>
                 <div class="text-center mx-auto">
@@ -101,6 +101,9 @@ export default {
         },
         lock_icon : function () {
             return this.person.is_wanted ? 'fas fa-lock' : 'fas fa-lock-open';
+        },
+        lock_title : function () {
+            return this.person.is_wanted ? 'מבוקש' : 'חשוד';
         }
     },
     methods:{
