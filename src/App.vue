@@ -15,11 +15,11 @@
         </v-col>
       <v-col
       sm="3">
-      <peopleList :listTitle="suspect" :peopleList=suspects class="suspect-list"></peopleList>
+      <peopleList :listTitle="wanted" color="red" :peopleList=wanteds class="wanted-list"></peopleList>
       </v-col>
       <v-col
       sm="3">
-      <peopleList :listTitle="wanted" :peopleList=wanteds class="wanted-list"></peopleList>
+      <peopleList :listTitle="suspect" color="yellow" :peopleList=suspects class="suspect-list"></peopleList>
       </v-col>
               <v-col
               sm="3">

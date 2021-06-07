@@ -103,7 +103,7 @@ export default {
 .words-list-card {
     background-color: #111633 !important;
     text-align: center;
-    border: 2px solid rgb(172, 172, 172) !important;
+    border: 2px solid #1e2238 !important;
 }
 
 .dialog-card {
