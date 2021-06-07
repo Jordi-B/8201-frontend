@@ -1,5 +1,5 @@
 <template>    
-  <v-app class="page">
+  <v-app>
     <v-app-bar app clipped-leftS flat dark>
       <v-toolbar-title>
         <span>8201</span>
@@ -8,7 +8,7 @@
     </v-app-bar>
     <Sidebar/>
     <router-view></router-view>
-    <v-main>
+    <v-main class="page">
       <v-container>
       <v-row>
                 <v-col sm="3">
@@ -107,5 +107,9 @@ html {
   width: 100%;
   margin: 0;
   background-color: black;
+}
+
+.page {
+  background-color: #060e29;
 }
 </style>
