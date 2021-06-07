@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card max-width="18vw"
+        <v-card max-width="16vw"
         height="8vh"
         elevation=11
         class="wordCard">
@@ -32,9 +32,9 @@ export default {
 <style scoped>
 .wordCard {
     background-color: #2e303f !important;
-    margin-bottom: 1vh;
+    margin-bottom: 0.25vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .infoText {
     color: #ffffff !important;

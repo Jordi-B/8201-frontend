@@ -1,16 +1,23 @@
 <template>
     <div>
-        <v-card max-width="18vw"
-        height="90vh"
+        <v-card max-width="16vw"
+        height="70vh"
         class="listCard"
         elevation=11>
-        <p class="text-h3 text-center listTitle">מילים</p>
-        <word :currentWord="currentWord"></word>
+        <div class="container listText titles-container">
+            <p>כמות</p>
+            <p>שימוש</p>
+            <p>מילה</p>
+        </div>
+        <div v-for="(currentWord, index) in commonWords" :key="index">
+            <word :currentWord="currentWord"></word>
+        </div>
         </v-card>
     </div>
 </template>
 
 <script>
+import api from '../api/api';
 import word from './word';
 export default {
     components: {
@@ -18,8 +25,12 @@ export default {
     },
     data() {
         return {
-            currentWord: { "word": "לדקור", "counter": 57, "percentageOfPosts": 34 }
+            commonWords: []
         }
+    },
+    async mounted() {
+        const response = await api.lists().wordsList();
+        this.commonWords = response.data;
     }
 }
 </script>
@@ -27,16 +38,14 @@ export default {
 <style scoped>
 .listCard {
     background-color: #111633 !important;
-    /* display: flex;
-    justify-content: center; */
+    overflow: auto;
 }
-.red {
-    border: 0.1px solid #942226 !important;
-}
-.yellow {
-    border: 0.1px solid #9c8d34 !important;
-}
-.listTitle {
+.listText p {
     color: #ffffff;
+    font-weight: bolder;
+}
+.titles-container {
+    height:  1vh;
+    margin-top: 1.5vh;
 }
 </style>
