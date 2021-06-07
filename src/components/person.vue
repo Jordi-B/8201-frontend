@@ -49,6 +49,7 @@
 <style scoped>
 .personCard {
     background-color: #2e303f !important;
+    margin-bottom: 1vh;
 }
 .infoText {
     color: #ffffff !important;

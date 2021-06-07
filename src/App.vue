@@ -27,6 +27,10 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'heebo';
+  src: url('./assets/Heebo-VariableFont_wght.ttf');
+}
 .page {
   background-color: #22223b;
 }
@@ -41,6 +45,7 @@ html {
   width: 100%;
   margin: 0;
   background-color: black;
+  font-family: heebo;
 }
 
 .page {

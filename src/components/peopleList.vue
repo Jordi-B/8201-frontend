@@ -3,6 +3,7 @@
         <v-card max-width="20vw"
         height="90vh"
         class="listCard"
+        elevation=11
         :class="color">
             <p class="text-h3 text-center listTitle">{{listTitle}}</p>
             <div v-for="(per, index) in peopleList" :key=index>
@@ -28,7 +29,7 @@ export default {
 
 <style scoped>
 .listCard {
-    background-color: #2a2b38 !important;
+    background-color: #111633 !important;
 }
 .red {
     border: 1px solid red;
