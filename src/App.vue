@@ -1,87 +1,35 @@
-<template>
-  <v-app class="page">
-    <v-main>
-      <v-container>
-      <v-row>
-                <v-col sm="3">
-        </v-col>
-      <v-col
-      sm="3">
-      <peopleList :listTitle="suspect" :peopleList=suspects class="suspect-list"></peopleList>
-      </v-col>
-      <v-col
-      sm="3">
-      <peopleList :listTitle="wanted" :peopleList=wanteds class="wanted-list"></peopleList>
-      </v-col>
-              <v-col
-              sm="3">
-        <wordsList title="מילים" description="מילים לניטור חשוד" :words="['רצח', 'שוד', 'גניבה', 'דקירה', 'סכין', 'מוות']"></wordsList>
-        </v-col>
-      </v-row>
-      </v-container>
+<template>    
+  <v-app>
+    <v-app-bar app clipped-leftS flat dark>
+      <v-toolbar-title>
+        <span>8201</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <Sidebar/>
+    <v-main class="page">
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import peopleList from './components/peopleList';
-import wordsList from './components/WordsList';
+import Sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
   components: {
-    peopleList,
-    wordsList
+    Sidebar
   },
 
-  data: () => ({
-    suspects: [
-      {
-        personId: '123456789',
-        first_name: 'ספיר',
-        last_name: 'רוזן',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '777777777',
-        first_name: 'שירה',
-        last_name: 'מוצפי',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '111111111',
-        first_name: 'אוריה',
-        last_name: 'וייס',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      }
-    ],
-    wanteds: [
-     {
-        personId: '123456789',
-        first_name: 'ספיר',
-        last_name: 'רוזן',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '777777777',
-        first_name: 'שירה',
-        last_name: 'מוצפי',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '111111111',
-        first_name: 'אוריה',
-        last_name: 'וייס',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      }
-    ],
-    suspect: "חשודים",
-    wanted: "מבוקשים"
-  }),
 };
 </script>
 
 <style>
+@font-face {
+  font-family: 'heebo';
+  src: url('./assets/Heebo-VariableFont_wght.ttf');
+}
 .page {
   background-color: #22223b;
 }
@@ -96,5 +44,10 @@ html {
   width: 100%;
   margin: 0;
   background-color: black;
+  font-family: heebo;
+}
+
+.page {
+  background-color: #060e29;
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
     <div>
         <v-card max-width="20vw"
-        height="80vh"
-        class="listCard">
+        height="90vh"
+        class="listCard"
+        elevation=11
+        :class="color">
             <p class="text-h3 text-center listTitle">{{listTitle}}</p>
             <div v-for="(per, index) in peopleList" :key=index>
-                <person :somePerson=per></person>
+                <person :somePerson="per"></person>
             </div>
         </v-card>
     </div>
@@ -19,14 +21,21 @@ export default {
     },
     props: {
         peopleList: Array,
-        listTitle: String
+        listTitle: String,
+        color: String
     }
 }
 </script>
 
 <style scoped>
 .listCard {
-    background-color: #2a2b38 !important;
+    background-color: #111633 !important;
+}
+.red {
+    border: 0.1px solid #942226 !important;
+}
+.yellow {
+    border: 0.1px solid #9c8d34 !important;
 }
 .listTitle {
     color: #ffffff;
