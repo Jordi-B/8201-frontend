@@ -59,5 +59,6 @@
 }
 .urlImage {
     margin-left: 1vw;
+    border-radius: 50%;
 }
 </style>
