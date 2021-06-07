@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <person-detail :person="person"></person-detail>
+    <person-detail :person="person" @change-wanted-state="changeWantedState"></person-detail>
     
   </v-container>
 </template>
@@ -12,6 +12,11 @@ import PersonDetail from "./PersonDetails.vue"
     components: {
       PersonDetail
     },
+    methods : {
+      changeWantedState : function () {
+        this.person.is_wanted = !this.person.is_wanted
+      }
+    },
     data: () => ({
       person:{
         id: '123456798',
@@ -20,7 +25,7 @@ import PersonDetail from "./PersonDetails.vue"
         phone_number: '0585676543',
         address: 'דן 8 מיתר',
         person_img_url: '',
-        is_wanted: true
+        is_wanted: false
       },
       ecosystem: [
         {

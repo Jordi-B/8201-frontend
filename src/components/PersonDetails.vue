@@ -1,6 +1,6 @@
 <template>
     <v-card
-    color="#4A148C"
+    color="#2A2B38"
     dark
     class="mx-auto"
     max-width="1000"
@@ -14,14 +14,10 @@
         outlined
         rounded
         text
+        @click="updateWantedState"
       >
-       <v-icon color ="green">
-      
-      fas fa-lock
-    </v-icon>
-    
+       <v-icon :color ="state_color" :class="lock_icon"></v-icon>
       </v-btn>
-    <i class="fas fa-lock"></i>   
     </v-card-actions>
     </v-col>
           <v-col>
@@ -78,6 +74,20 @@ export default {
             type: Object,
             required: true
         }
+    },
+    computed: {
+        state_color : function () {
+            return this.person.is_wanted ? 'red' : 'green';
+        },
+        lock_icon : function () {
+            return this.person.is_wanted ? 'fas fa-lock' : 'fas fa-lock-open';
+        }
+    },
+    methods:{
+      updateWantedState: function(){
+          
+         this.$emit("change-wanted-state") ;
+      }
     }
 }
 </script>
