@@ -6,7 +6,7 @@
         :class="color">
             <p class="text-h3 text-center listTitle">{{listTitle}}</p>
             <div v-for="(per, index) in peopleList" :key=index>
-                <person :somePerson=per></person>
+                <person :somePerson="per"></person>
             </div>
         </v-card>
     </div>

@@ -13,11 +13,10 @@
         <v-list-item-subtitle class="infoText">{{somePerson.id}}</v-list-item-subtitle>
       </v-list-item-content>
       <v-img class="urlImage"
-  v-bind:lazy-src="somePerson.person_img_url"
-  max-height="7vh"
-  max-width="5vw"
-  v-bind:src="somePerson.person_img_url"
-></v-img>
+        max-height="7vh"
+        max-width="5vw"
+        :src="somePerson.person_img_url"
+        ></v-img>
     </v-list-item>
 
     <v-card-actions>
