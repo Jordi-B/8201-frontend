@@ -1,16 +1,19 @@
 <template>
   <v-container>
     <person-detail :person="person" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-detail>
-    
+    <titled-info bgColor="black" amountColor="red" amount="90" title=" שלום מה נשמע איתכם"></titled-info>
+    <titled-info bgColor="pink" amountColor="green" amount="3" title=" שלום מה נשמ   ע איתכם"></titled-info>
   </v-container>
 </template>
 
 <script>
 import PersonDetail from "./PersonDetails.vue"
+import TitledInfo from "./TitledInfo.vue"
   export default {
     name: 'HelloWorld',
     components: {
-      PersonDetail
+      PersonDetail,
+      TitledInfo
     },
     methods : {
       changeWantedState : function () {
