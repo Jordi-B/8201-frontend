@@ -1,33 +1,44 @@
 <template>
     <v-card
-    color="#2A2B38"
+    :color="bgColor"
     dark
     class="mx-auto"
-    max-width="1000"
+    max-width="50vw"
     outlined
   >
   <v-container>
       <v-row>
           <v-col>
     <v-card-actions>
-      <v-btn
-        outlined
-        rounded
-        text
-        @click="updateWantedState"
-      >
-       <v-icon :color ="state_color" :class="lock_icon"></v-icon>
-      </v-btn>
+        <v-container v-if="wantedButtonStatus">
+            <v-row>
+                <h1 class="text-center mx-auto">מבוקש</h1>
+            </v-row>
+            <v-row>
+                <div class="text-center mx-auto">
+                    <v-btn 
+                        outlined
+                        rounded
+                        text
+                        x-large
+                        icon
+                        @click="updateWantedState"
+                    >
+                        <v-icon :color ="state_color" :class="lock_icon"></v-icon>
+                    </v-btn>
+                </div>
+            </v-row>
+        </v-container>
     </v-card-actions>
     </v-col>
           <v-col>
     <v-list-item two-line>
       <v-list-item-content>
-        <v-list-item-title class="text mb-1">
+        <v-list-item-title class="text mb-1 text-lg-right">
             <strong>פלאפון</strong>
           {{person.phone_number}}
         </v-list-item-title>
-        <div class="text-overline-h4 mb-4">
+        <div class="text-overline-h4 mb-4 text-lg-right">
           <strong>כתובת </strong>
           {{person.address}}
         </div>
@@ -41,10 +52,10 @@
       <v-col>
     <v-list-item two-line>
       <v-list-item-content>
-        <div class="text-overline-h4 mb-4">
+        <div class="text-overline-h4 mb-4 text-lg-right">
           <strong>{{person.first_name + " " + person.last_name}}</strong>
         </div>
-        <v-list-item-title class="text mb-1">
+        <v-list-item-title class="text mb-1 text-lg-right">
           {{person.id}}
         </v-list-item-title>
       </v-list-item-content>
@@ -59,6 +70,7 @@
         tile
         size="120"
         color="grey"
+        class=" mx-auto"
       ></v-list-item-avatar>
     </v-col>
 
@@ -72,6 +84,14 @@ export default {
     props: {
         person: {
             type: Object,
+            required: true
+        },
+        bgColor: {
+            type: String,
+            required: true
+        },
+        wantedButtonStatus: {
+            type: Boolean,
             required: true
         }
     },

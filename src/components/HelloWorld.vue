@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <person-detail :person="person" @change-wanted-state="changeWantedState"></person-detail>
+    <person-detail :person="person" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-detail>
     
   </v-container>
 </template>
@@ -27,6 +27,7 @@ import PersonDetail from "./PersonDetails.vue"
         person_img_url: '',
         is_wanted: false
       },
+      wantedButton: true,
       ecosystem: [
         {
           text: 'vuetify-loader',
