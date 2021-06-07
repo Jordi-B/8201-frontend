@@ -1,7 +1,7 @@
 <template>
     <v-container>
       <v-row>
-                <v-col sm="3">
+        <v-col sm="3">
         </v-col>
       <v-col
       sm="3">
@@ -22,6 +22,7 @@
 <script>
 import peopleList from '../components/peopleList';
 import wordsList from '../components/WordsList';
+import api from '../api/api';
 
 export default {
     name: 'ListsPage',
@@ -30,51 +31,19 @@ export default {
         wordsList
     },
     data() {
-        return {
-            
-    suspects: [
-      {
-        personId: '123456789',
-        first_name: 'ספיר',
-        last_name: 'רוזן',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '777777777',
-        first_name: 'שירה',
-        last_name: 'מוצפי',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '111111111',
-        first_name: 'אוריה',
-        last_name: 'וייס',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      }
-    ],
-    wanteds: [
-     {
-        personId: '123456789',
-        first_name: 'ספיר',
-        last_name: 'רוזן',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '777777777',
-        first_name: 'שירה',
-        last_name: 'מוצפי',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      },
-      {
-        personId: '111111111',
-        first_name: 'אוריה',
-        last_name: 'וייס',
-        person_img_url: 'https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png'
-      }
-    ],
+    return {
+    suspects: [],
+    wanteds: [],
     suspect: "חשודים",
     wanted: "מבוקשים"
         }
-    }
+    },
+    async mounted() {
+    const response = await api.lists().suspectsList();
+    const allSuspects = response.data;
+    allSuspects.forEach(sus => {
+      sus.isWanted ? this.wanteds.push(sus) : this.suspects.push(sus); 
+    });
+  }
 }
 </script>
