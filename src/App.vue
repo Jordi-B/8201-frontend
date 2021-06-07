@@ -7,9 +7,10 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <Sidebar/>
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
     <v-main class="page">
-      <v-container>
+      <router-view></router-view>
+      <!-- <v-container>
       <v-row>
                 <v-col sm="3">
         </v-col>
@@ -26,22 +27,22 @@
         <wordsList title="מילים" description="מילים לניטור חשוד" :words="['רצח', 'שוד', 'גניבה', 'דקירה', 'סכין', 'מוות']"></wordsList>
         </v-col>
       </v-row>
-      </v-container>
+      </v-container> -->
     </v-main>
   </v-app>
 </template>
 
 <script>
-import peopleList from './components/peopleList';
-import wordsList from './components/WordsList';
+// import peopleList from './components/peopleList';
+// import wordsList from './components/WordsList';
 import Sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
 
   components: {
-    peopleList,
-    wordsList,
+    // peopleList,
+    // wordsList,
     Sidebar
   },
 
