@@ -5,12 +5,24 @@
     </div> -->
 
         <v-list-item class="list-item">
-            <v-list-item-icon v-if="true">
+            <v-list-item-icon v-if="!editing && editable">
                 <v-icon @click="editItem" class="pencil">mdi-pencil</v-icon>
-                <v-icon @click="deleteItem" class="delete-button">mdi-delete</v-icon>
+                <v-icon @click="deleteItem(title)" class="delete-button">mdi-delete</v-icon>
+            </v-list-item-icon>
+            <v-list-item-icon v-else-if="editable">
+                <v-icon @click="changeWord" class="confirm-edit-button">mdi-check-outline</v-icon>
+                <v-icon @click="editing = false" class="close-edit-button">mdi-close</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-            <v-list-item-title class="title">{{ title }}</v-list-item-title>
+            <v-list-item-title class="title" v-if="!editing">{{ title }}</v-list-item-title>
+            <v-text-field 
+            v-else
+            class="text-input" 
+            :placeholder="title"
+            dark
+            dense
+            v-model="newWord"
+            ></v-text-field>
           </v-list-item-content>
           <slot></slot>
         </v-list-item>
@@ -23,15 +35,30 @@ export default {
         title: {
             type: String,
             default: ''
+        },
+        editable: {
+            type: Boolean,
+            default: false
+        }
+    },
+
+    data() {
+        return {
+            editing: false,
+            newWord: ''
         }
     },
     methods: {
         deleteItem() {
-            alert('deleting...');
+            this.$emit('delete', this.title);
         },
 
         editItem() {
-            alert('editing...');
+            this.editing = !this.editing;
+        },
+
+        changeWord() {
+            this.$emit('edit', { wordToEdit: this.title, newWord: this.newWord });
         }
     }
 }
@@ -58,4 +85,15 @@ export default {
     color: rgb(236, 79, 79);
 }
 
+.text-input {
+    direction: rtl;
+}
+
+.confirm-edit-button {
+    color: green;
+}
+
+.close-edit-button {
+    color: red;
+}
 </style>

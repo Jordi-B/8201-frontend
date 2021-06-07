@@ -45,13 +45,14 @@
         ></v-text-field>
     </ListItem>
     <div v-for="word in filteredWords" :key="word">
-      <ListItem :title="word"/>
+      <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
     </div>
     </v-card>
 </template>
 
 <script>
 import ListItem from './ListItem.vue';
+import axios from "axios";
 
 export default {
     name: 'WordsList',
@@ -66,31 +67,42 @@ export default {
         description: {
             type: String,
             default: "Description"
-        },
-        words: {
-            type: Array,
-            default: () => []
         }
     },
     data() {
         return {
             search: '',
             dialog: false,
-            newWord: ''
+            newWord: '',
+            words: []
         }
     },
     computed: {
         filteredWords() {
-            return this.words.filter(word => word.includes(this.search));
+            return this.words.map(word => word.word).filter(word => word.includes(this.search));
         }
     },
 
     methods: {
         addNewWord() {
-            alert(this.newWord);
+            this.words.push({ word: this.newWord });
             this.newWord = '';
             this.dialog = false;
+        },
+
+        deleteWord(wordTitle) {
+            this.words = this.words.filter(word => word.word !== wordTitle);
+        },
+
+        editWord({ wordToEdit, newWord }) {
+            this.words.find(word => word.word === wordToEdit).word = newWord;
         }
+    },
+
+    async mounted() {
+        const response = await axios.get('http://localhost:3000/words');
+        const data = response.data;
+        this.words = data;
     }
 }
 </script>
