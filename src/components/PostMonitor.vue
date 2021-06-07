@@ -22,6 +22,7 @@
                   :postDate="post.postDate"
                   :img="post.person.person_img_url" />
     </div>
+    <h1 class="no-results-text" v-if="filteredPosts.length === 0">לא נמצאו תוצאות</h1>
     </v-sheet>
 </template>
 
@@ -60,17 +61,28 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
+
 .post-monitor-sheet {
     background-color: #111633 !important;
-    border: 1px solid rgb(185, 185, 185);
-    width: 40vw;
-    height: 60vh;
-    height: 100%;
+    width: 33vw;
+    height: 53vh;
+    overflow: auto;
+        border: 2px solid #1e2238 !important;
+}
+
+.text-h2 {
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .title {
     color: white;
     direction: rtl;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .title-container {
@@ -86,7 +98,21 @@ export default {
     color:  white !important;
 }
 
+.no-results-text {
+    color: red;
+    margin-top: 12.5vh;
+    text-align: center;
+}
+
 .filter-search {
     direction: rtl;
+}
+
+::-webkit-scrollbar {
+    width: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(163, 163, 163);
 }
 </style>

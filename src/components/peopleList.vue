@@ -28,6 +28,11 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .listCard {
     background-color: #111633 !important;
 }
@@ -39,5 +44,14 @@ export default {
 }
 .listTitle {
     color: #ffffff;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+::-webkit-scrollbar {
+    width: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(163, 163, 163);
 }
 </style>

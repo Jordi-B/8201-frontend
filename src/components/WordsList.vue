@@ -21,10 +21,10 @@
     
     <v-card class="dialog-card">
         <v-card-title
-        class="headline grey dialog-title"
+        class="headline blue darken-3 dialog-title"
         primary-title
         >
-        הינך עומד להוסיף מילה חדשה למילים המנוטרות
+        הוספת מילה חדשה למאגר המילים המנוטרות
         </v-card-title>
 
         <v-card-text>
@@ -108,30 +108,36 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
-
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 
 .words-list-card {
     background-color: #111633 !important;
     text-align: center;
     border: 2px solid #1e2238 !important;
+    font-family: 'Heebo', sans-serif !important;
     overflow: auto;
 }
 
 .dialog-card {
     text-align: center;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .title {
     color: white !important;
     font-weight:1200;
     font-size: 6em;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .title-description {
     color: white;
     font-weight:lighter;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .new-item-button {
@@ -143,20 +149,32 @@ export default {
     background-color: rgb(0, 0, 177);
     color: white;
     direction: rtl;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .dialog-input {
     direction: rtl;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .headline {
     color: white;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .text-input {
     direction: rtl;
     width: 80%;
     margin-left: 2vh;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+::-webkit-scrollbar {
+    width: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(163, 163, 163);
 }
 
 </style>

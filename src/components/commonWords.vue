@@ -25,10 +25,16 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .listCard {
     background-color: #111633 !important;
     /* display: flex;
     justify-content: center; */
+        border: 2px solid #1e2238 !important;
 }
 .red {
     border: 0.1px solid #942226 !important;
@@ -38,5 +44,6 @@ export default {
 }
 .listTitle {
     color: #ffffff;
+    font-family: 'Heebo', sans-serif !important;
 }
 </style>

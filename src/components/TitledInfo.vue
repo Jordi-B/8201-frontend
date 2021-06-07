@@ -44,7 +44,13 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .rounded-card{
     border-radius:20px;
+    font-family: 'Heebo', sans-serif !important;
 }
 </style>

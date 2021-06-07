@@ -6,6 +6,7 @@
         <div class="words text"> {{ words.join(', ') }} </div>
         <div class="time">{{ timeSince }}</div>
     </div>
+    
 </template>
 
 <script>
@@ -41,26 +42,34 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .post-bubble {
     background-color: rgb(214, 214, 214);
-    height: 10.5vh;
+    height: 8.3vh;
     border-radius: 20px;
-    width: 32.5vw;
+    width: 29vw;
     margin-left: 2.5vw;
     display: flex;
     flex-direction: row-reverse;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    position: relative;
 }
 
 .author {
     font-weight: bolder;
     margin-right: 1vw;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .words {
     color: rgb(187, 52, 187);
     font-weight: bolder;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .author-pic {
@@ -73,14 +82,15 @@ export default {
 }
 
 .time {
-    align-self: flex-start;
     position: absolute;
     margin-right: 20px;
+    font-size: 14.5px;
 }
 
 .text {
     margin-left: 0.5vw;
     margin-top: 3.2vh;
-    font-size: 1.45vw;
+    font-size: 1.25vw;
+    font-family: 'Heebo', sans-serif !important;
 }
 </style>
