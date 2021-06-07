@@ -27,13 +27,15 @@
           <v-col>
     <v-list-item two-line>
       <v-list-item-content>
+        <v-list-item-title class="text mb-1">
+            <strong>פלאפון</strong>
+          {{person.phone_number}}
+        </v-list-item-title>
         <div class="text-overline-h4 mb-4">
           <strong>כתובת </strong>
-          <div>{{person.address}}</div>
+          {{person.address}}
         </div>
-        <v-list-item-title class="text mb-1">
-          123456789
-        </v-list-item-title>
+        
       </v-list-item-content>
 
       
@@ -44,10 +46,10 @@
     <v-list-item two-line>
       <v-list-item-content>
         <div class="text-overline-h4 mb-4">
-          <strong>mor steinberg</strong>
+          <strong>{{person.first_name + " " + person.last_name}}</strong>
         </div>
         <v-list-item-title class="text mb-1">
-          123456789
+          {{person.id}}
         </v-list-item-title>
       </v-list-item-content>
 

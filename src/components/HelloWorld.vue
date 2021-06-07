@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <person-detail></person-detail>
+    <person-detail :person="person"></person-detail>
     
   </v-container>
 </template>
@@ -13,6 +13,15 @@ import PersonDetail from "./PersonDetails.vue"
       PersonDetail
     },
     data: () => ({
+      person:{
+        id: '123456798',
+        first_name: 'mor',
+        last_name: 'steinberg',
+        phone_number: '0585676543',
+        address: 'דן 8 מיתר',
+        person_img_url: '',
+        is_wanted: true
+      },
       ecosystem: [
         {
           text: 'vuetify-loader',
