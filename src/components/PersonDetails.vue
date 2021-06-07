@@ -2,7 +2,7 @@
     <v-card
     :color="bgColor"
     dark
-    class="mx-auto"
+    class="mx-auto rounded-card"
     max-width="50vw"
     outlined
   >
@@ -113,5 +113,7 @@ export default {
 </script>
 
 <style scoped>
-
+.rounded-card{
+    border-radius:20px;
+}
 </style>

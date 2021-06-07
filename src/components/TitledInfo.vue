@@ -3,9 +3,9 @@
     elevation="2" 
     :color="bgColor"
     dark
-    class="mx-auto"
+    class="mx-auto rounded-card"
     max-width="10vw"
-    height="25vh"
+    height="20vh"
     outlined>
         <v-container>
             <v-row>
@@ -44,5 +44,7 @@ export default {
 </script>
 
 <style scoped>
-
+.rounded-card{
+    border-radius:20px;
+}
 </style>
