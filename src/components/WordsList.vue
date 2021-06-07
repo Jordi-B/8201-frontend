@@ -52,7 +52,7 @@
 
 <script>
 import ListItem from './ListItem.vue';
-import axios from "axios";
+import api from '../api/api';
 
 export default {
     name: 'WordsList',
@@ -100,7 +100,7 @@ export default {
     },
 
     async mounted() {
-        const response = await axios.get('http://localhost:3000/words');
+        const response = await api.lists().wordsList();
         const data = response.data;
         this.words = data;
     }

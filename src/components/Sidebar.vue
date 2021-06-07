@@ -16,7 +16,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
+            <v-list-item-title class="navbar-title">{{ item.text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -39,5 +39,7 @@
 </script>
 
 <style scoped>
-
+.navbar-title {
+  direction: rtl;
+}
 </style>
