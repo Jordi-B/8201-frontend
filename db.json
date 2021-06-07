@@ -1,0 +1,28 @@
+{
+    "words": [
+      { "word": "לדקור", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "מוות", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "סמים", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "לרצוח", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "סכין", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "רצח", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "שוקי", "counter": 57, "percentageOfPosts": 34 }
+    ],
+    "suspects": [
+      { "id": "42354341", "firstName": "uria", "lastName": "aharoni", "phoneNumber": "0523424328", "address":
+      "holon 15", "person_img_url": "asdf", "personId": 1, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" },
+      { "id": "42354541", "firstName": "uria", "lastName": "aharoni", "phoneNumber": "0523424328", "address":
+      "holon 15", "person_img_url": "asdff", "personId": 2, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
+      { "id": "40354341", "firstName": "uria", "lastName": "aharoni", "phoneNumber": "0523424328", "address":
+      "holon 15", "person_img_url": "dfgfdg", "personId": 3, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
+      { "id": "41354341", "firstName": "uria", "lastName": "aharoni", "phoneNumber": "0523424328", "address":
+      "holon 15", "person_img_url": "fdgfdg", "personId": 4, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" }
+    ],
+    
+    "users": [
+    { "username": "typicode", "password": "123456", "isManager": true },
+    { "username": "typic213ode", "password": "1223456", "isManager": false },
+    { "username": "typicode", "password": "123456", "isManager": true },
+    { "username": "typicode", "password": "123456", "isManager": false }
+    ]
+  }
