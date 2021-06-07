@@ -32,10 +32,10 @@ export default {
     background-color: #111633 !important;
 }
 .red {
-    border: 1px solid red;
+    border: 0.1px solid #942226 !important;
 }
 .yellow {
-    border: 1px solid yellow;
+    border: 0.1px solid #9c8d34 !important;
 }
 .listTitle {
     color: #ffffff;

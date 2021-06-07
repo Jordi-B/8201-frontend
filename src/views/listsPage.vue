@@ -1,7 +1,7 @@
 <template>
     <v-container>
       <v-row>
-        <v-col sm="3">
+        <v-col sm="2">
         </v-col>
       <v-col
       sm="3">
@@ -14,6 +14,8 @@
               <v-col
               sm="3">
         <wordsList title="מילים" description="מילים לניטור חשוד" :words="['רצח', 'שוד', 'גניבה', 'דקירה', 'סכין', 'מוות']"></wordsList>
+        </v-col>
+        <v-col sm="1">
         </v-col>
       </v-row>
     </v-container>
