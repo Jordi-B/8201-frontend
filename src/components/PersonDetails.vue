@@ -3,7 +3,7 @@
     :color="bgColor"
     dark
     class="mx-auto rounded-card"
-    max-width="50vw"
+    width="56vw"
     outlined
   >
   <v-container>
@@ -122,7 +122,7 @@ export default {
     font-family: 'Heebo', sans-serif !important;
 }
 .rounded-card{
-    border-radius:20px;
+    border-radius:10px;
 }
 
 .text {
