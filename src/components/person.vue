@@ -12,11 +12,11 @@
         </v-list-item-title>
         <v-list-item-subtitle class="infoText">{{somePerson.person.id}}</v-list-item-subtitle>
       </v-list-item-content>
+      <v-avatar height="7vh" width="7vh">
       <v-img class="urlImage"
-        max-height="7vh"
-        max-width="5vw"
         :src="somePerson.person.personImageURL"
-        ></v-img>
+        ></v-img>        
+      </v-avatar>
     </v-list-item>
 
     <v-card-actions>
@@ -59,6 +59,7 @@
 .infoText {
     color: #ffffff !important;
     direction: rtl;
+    margin-right: 1vw;
     font-family: 'Heebo', sans-serif !important;
 }
 
@@ -69,7 +70,6 @@
     background-color: #6c757d;
 }
 .urlImage {
-    margin-left: 1vw;
-    border-radius: 50%;
+
 }
 </style>
