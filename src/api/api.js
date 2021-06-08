@@ -15,7 +15,7 @@ export default {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/add', newWord);
             },
             deleteWord: async (wordToDelete) => {
-                return await axios.delete('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words', wordToDelete);
+                return await axios.delete('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words', {data: wordToDelete});
             },
             editWord: async (wordsToReplace) => {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/replace', wordsToReplace);
