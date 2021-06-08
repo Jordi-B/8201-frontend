@@ -14,7 +14,7 @@
       </v-card-title>
       <v-row>
       <h4 class="status" >
-        סטטוס {{status}}     
+        סטטוס {{license.status}}     
       </h4>
       </v-row>
       <v-row>
@@ -29,8 +29,7 @@
         <v-col :key="n" class="colStyle">
           <h4 class="text-center">
             סיום
-            {{endDate
-            }}
+            {{license.endDate}}
          </h4>
         </v-col>
         <v-responsive
@@ -41,7 +40,7 @@
         <v-col :key="n">
          <h4 class="text-center">
             התחלה
-            {{startDate}}
+            {{license.startDate}}
          </h4>
         </v-col>
         <v-responsive
@@ -60,7 +59,7 @@
   מספר רישיון
     <br>
     <div style="margin-left: 2vh">
-  {{licenseNumber}}
+  {{license.licenseNumber}}
   </div>
   </h2>
   </v-row>
@@ -71,21 +70,29 @@
   </div>
 </template>
 <script>
+import api from '../api/api';
+
 export default {
   name: 'driverLicense',
+  props: {
+    personId: {
+      type: String,
+      required: true
+    }
+  },
+
   data () {
     return {
-        status: "33233",
-        startDate: "10\\2\\2001",
-        endDate:"10\\2\\2001" ,
-        licenseNumber: "000000", 
+      license : {} 
+    }
+  },
+  async mounted() {
+    const response = await api.profile().getLicenseById(this.personId);
+    this.license = response.data[0];
     }
   }
-}
 </script>
-.mx-auto{
-    
-}
+
 <style scoped>
 .status{
     margin-top: 1vh;
