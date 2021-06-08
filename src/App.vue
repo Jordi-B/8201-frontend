@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app clipped-leftS flat dark>
       <v-toolbar-title>
-        <span>8201</span>
+        <span class="head-title">8201</span><span> ניטור פעילות חשודה ברשתות חברתיות</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -26,9 +26,10 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: 'heebo';
-  src: url('./assets/Heebo-VariableFont_wght.ttf');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
 }
 .page {
   background-color: #22223b;
@@ -44,10 +45,29 @@ html {
   width: 100%;
   margin: 0;
   background-color: black;
-  font-family: heebo;
+  font-family: "heebo";
 }
 
 .page {
   background-color: #060e29;
+}
+
+.head-title {
+  font-weight: bolder;
+    text-shadow: 2px 2px rgb(163, 163, 163);
+
+}
+
+.head-title2 {
+  margin-left: 35vw;
+
+}
+
+
+
+.one {
+  font-weight: bolder;
+  color: red;
+;
 }
 </style>

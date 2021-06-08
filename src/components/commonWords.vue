@@ -36,16 +36,34 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .listCard {
     background-color: #111633 !important;
+<<<<<<< HEAD
     overflow: auto;
+=======
+    /* display: flex;
+    justify-content: center; */
+        border: 2px solid #1e2238 !important;
+}
+.red {
+    border: 0.1px solid #942226 !important;
+>>>>>>> 402b6db1fff705629cca25f801586e6bcb4c4bdb
 }
 .listText p {
     color: #ffffff;
+<<<<<<< HEAD
     font-weight: bolder;
 }
 .titles-container {
     height:  1vh;
     margin-top: 1.5vh;
+=======
+    font-family: 'Heebo', sans-serif !important;
+>>>>>>> 402b6db1fff705629cca25f801586e6bcb4c4bdb
 }
 </style>
