@@ -24,6 +24,7 @@
         outlined
         rounded
         text
+        to="/profile"
     class="infoText profileButotn">
         מעבר לפרופיל
          <v-icon
