@@ -19,7 +19,7 @@ export default new Router({
             component: Home
         },
         {
-            path: '/profile',
+            path: '/profile/:id',
             name: "ProfilePage",
             component: profilePage
         }

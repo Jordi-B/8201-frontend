@@ -50,14 +50,14 @@ export default {
     font-family: 'Heebo', sans-serif !important;
 }
 .rounded-card{
-    border-radius:20px;
+    border-radius:10px;
+
     font-family: 'Heebo', sans-serif !important;
 }
 
 .h1-title {
     font-weight: lighter;
 }
-
 .amount {
     font-size: 3.5vw;
 }

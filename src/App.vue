@@ -34,7 +34,10 @@ export default {
 .page {
   background-color: #22223b;
 }
-
+.container {  
+  justify-content: space-around;
+  align-items: center;
+}
 html {
   height: 100%;
   width: 100%;
