@@ -45,6 +45,7 @@
         v-model="search"
         ></v-text-field>
     </ListItem>
+    <span class="no-words" v-if="filteredWords.length === 0">מילה לא קיימת</span>
     <div v-for="word in filteredWords" :key="word">
       <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
     </div>
@@ -143,6 +144,10 @@ export default {
     border: 2px solid #1e2238 !important;
     font-family: 'Heebo', sans-serif !important;
     overflow: auto;
+}
+
+.no-words {
+    color:crimson;
 }
 
 .dialog-card {
