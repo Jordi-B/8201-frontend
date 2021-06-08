@@ -2,22 +2,23 @@
   <div class="driverLicense">
     <template>
   <v-card
+    color="#2A2B38"
     style="color:white;"
-    class="mx-auto cardMain blue " 
+    class="mx-auto" 
     max-width="344"
   >
-    <v-card-title  class="justify-center blue">
-      <h1 class="justify-center">
+    <v-card-title  class="justify-center">
+      <h2 class="justify-center">
         רשיון נהיגה
-      </h1>
+      </h2>
       </v-card-title>
       <v-row>
-      <h2 class="status blue" >
-         סטטוס        {{status}}
-      </h2>
+      <h4 class="status" >
+        סטטוס {{status}}     
+      </h4>
       </v-row>
       <v-row>
-      <b class="date" >
+      <b class="date text-center" >
       <br>
       תאריך
       </b>
@@ -26,11 +27,11 @@
     <v-row >
       
         <v-col :key="n" class="colStyle">
-          <h2>
+          <h4 class="text-center">
             סיום
             {{endDate
             }}
-         </h2>
+         </h4>
         </v-col>
         <v-responsive
           v-if="n === 2"
@@ -38,10 +39,10 @@
           width="100%"
         ></v-responsive>
         <v-col :key="n">
-         <h2>
+         <h4 class="text-center">
             התחלה
             {{startDate}}
-         </h2>
+         </h4>
         </v-col>
         <v-responsive
           v-if="n === 2"
@@ -86,9 +87,6 @@ export default {
     
 }
 <style scoped>
-.cardMain{
-    background : "blue"
-}
 .status{
     margin-top: 1vh;
     margin-left: 23vh ;

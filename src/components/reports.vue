@@ -1,61 +1,60 @@
 <template>
-  <div class="driverLicense ">
+  <div class="driverLicense">
     <template  >
-  <v-card class="mx-auto cardMain blue" max-width="344" style="color:white;">
+  <v-card class="mx-auto" max-width="344" >
     <v-card-title  class="justify-center">
-      <h1 class="justify-center blue" style="color:white;">
+      <h1 class="justify-center">
  צווים ודוחות
       </h1>
       </v-card-title>
-       <v-container class="blue" style="color:white;">
-    <v-row no-gutters class = "blue" style="color:white;">
-      <template v-for="n in reportsList.length -1 " class = "blue" style="color:white;">
-        <v-col :key="n" class = "blue" style="color:white;">
+       <v-container>
+    <v-row no-gutters >
+      <template v-for="n in reportsList.length -1">
+        <v-col :key="n">
           <v-card
-            class=" blue pa-2 " style="color:white;"
+            class="pa-2" 
             
             
           >
-           <v-row no-gutters class = "blue" style="color:white;">
-      <v-col class = "blue" style="color:white;">
+           <v-row no-gutters>
+      <v-col>
         <v-card
-        style="color:white;"
-          class=" blue pa-2"
+        
+          class="pa-2"
           outlined
           tile
         >
-        <h4 class= "blue" style="color:white;">
+        <h4 >
              סוף תוקף
              </h4>
-             <div class = "blue" style="color:white;">
+             <div>
           {{reportsList[n].ending_date}}
           </div>
           
         </v-card>
 
       </v-col >
-      <v-col class= "blue" order="12" style="color:white;" >
+      <v-col order="12">
         <v-card
-          class=" blue pa-2
-        " style="color:white;" 
+          class="pa-2"  
           outlined
           tile
         >
-        <h3 class = "blue" style="color:white;">
+        <h3 >
           {{reportsList[n].permition_desc}}
           </h3>
         </v-card>
       </v-col>
       <v-col >
         <v-card
-          class="blue pa-2" style="color:white;"
+          class=" pa-2"
           outlined
           tile
         >
-        <h4 class = "blue" style="color:white;">
+        <h4>
         תחילת תוקף
         </h4 >
-        <div class="blue" style="color:white;">
+        <div>
           {{reportsList[n].starting_date}}
           </div>
         </v-card>
@@ -63,7 +62,7 @@
     </v-row>
           </v-card>
         </v-col>
-        <v-responsive class = "blue" style="color:white;"
+        <v-responsive
           v-if="n === n"
           :key="`width-${n}`"
           width="100%"
@@ -97,12 +96,11 @@ export default {
   }
 }
 </script>
-.mx-auto{
-    
-}
+
 <style scoped>
-.cardMain{
-    background : "blue"
+.v-card{
+  background-color: #2A2B38;
+  color:white;
 }
 .status{
     margin-top: 1vh;
