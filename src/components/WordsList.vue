@@ -30,6 +30,7 @@
         <v-card-text>
             מילה זו תיווסף למאגר המילים המנוטרות, חישבו היטב לפני הוספת מילה חדשה למאגר
         </v-card-text>
+        <span v-if="alreadyExists" class="error-span">המילה כבר קיימת</span>
         <v-text-field class="dialog-input" v-model="newWord"></v-text-field>
         <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''">סגור</v-btn>
         <v-btn color="blue darken-1" text @click="addNewWord">שמור</v-btn>
@@ -74,7 +75,8 @@ export default {
             search: '',
             dialog: false,
             newWord: '',
-            words: []
+            words: [],
+            alreadyExists: false
         }
     },
     computed: {
@@ -86,10 +88,15 @@ export default {
     methods: {
         async addNewWord() {
             try {
-                this.words.push({ word: this.newWord });
-                await api.lists().addNewWord({"word": this.newWord});
-                this.newWord = '';
-                this.dialog = false;
+                if(this.words.find(word => word.word === this.newWord)) {
+                    this.alreadyExists = true;
+                } else {
+                    this.words.push({ word: this.newWord });
+                    await api.lists().addNewWord({word: this.newWord});
+                    this.newWord = '';
+                    this.alreadyExists = false;
+                    this.dialog = false;
+                }
             } catch (err) {
                 alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
                 this.dialog = false;
@@ -159,6 +166,10 @@ export default {
 .new-item-button {
     display: inline;
     margin-bottom: 10px;
+}
+
+.error-span {
+    color: red;
 }
 
 .search-field {

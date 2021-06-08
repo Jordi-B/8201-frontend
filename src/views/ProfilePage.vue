@@ -8,7 +8,7 @@
         </v-col>
         <v-col
         cols="2">
-            <titled-info bgColor="black" amountColor="red" amount="90" title=" שלום מה נשמע איתכם"></titled-info>
+            <titled-info bgColor="black" amountColor="red" :amount="90" title=" שלום מה נשמע איתכם"></titled-info>
         </v-col>
         <v-col cols="2">
             <driver-license></driver-license>

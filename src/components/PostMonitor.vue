@@ -55,7 +55,6 @@ export default {
     async mounted() {
         const response = await api.lists().recentPosts();
         const data = response.data;
-        console.log(data);
         this.posts = data;
     }
 }
