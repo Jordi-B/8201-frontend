@@ -1,6 +1,7 @@
 <template>
     <div>
-        <v-card max-width="16vw"
+        <span class="text-h6 card-title">מילים נפוצות</span>
+        <v-card width="16vw"
         height="53vh"
         class="listCard"
         elevation=11>
@@ -46,7 +47,7 @@ export default {
     overflow: auto;
     /* display: flex;
     justify-content: center; */
-        border: 2px solid #1e2238 !important;
+    border: 2px solid #1e2238 !important;
 }
 .red {
     border: 0.1px solid #942226 !important;
@@ -59,5 +60,18 @@ export default {
     height:  1vh;
     margin-top: 1.5vh;
     font-family: 'Heebo', sans-serif !important;
+}
+
+.card-title {
+    color: #ffffff;
+    direction: rtl;
+    display: block;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.container {  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>

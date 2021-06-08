@@ -99,7 +99,7 @@ export default {
 }
 
 .no-results-text {
-    color: red;
+    color: #f42b03;
     margin-top: 12.5vh;
     text-align: center;
 }

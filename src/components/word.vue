@@ -46,4 +46,10 @@ export default {
     color: #619cd4;
     direction: rtl;
 }
+
+.container {  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 </style>

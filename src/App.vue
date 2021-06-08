@@ -34,11 +34,6 @@ export default {
 .page {
   background-color: #22223b;
 }
-.container {  
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 
 html {
   height: 100%;
@@ -62,8 +57,6 @@ html {
   margin-left: 35vw;
 
 }
-
-
 
 .one {
   font-weight: bolder;
