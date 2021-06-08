@@ -85,20 +85,33 @@ export default {
 
     methods: {
         async addNewWord() {
-            this.words.push({ word: this.newWord });
-            await api.lists().addNewWord({"word": this.newWord});
-            this.newWord = '';
-            this.dialog = false;
+            try {
+                this.words.push({ word: this.newWord });
+                await api.lists().addNewWord({"word": this.newWord});
+                this.newWord = '';
+                this.dialog = false;
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+                this.dialog = false;
+            }
         },
 
         async deleteWord(wordTitle) {
-            this.words = this.words.filter(word => word.word !== wordTitle);
-            await api.lists().deleteWord({"word": this.wordTitle});
+            try {
+                this.words = this.words.filter(word => word.word !== wordTitle);
+                await api.lists().deleteWord({"word": wordTitle});
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+            }
         },
 
         async editWord({ wordToEdit, newWord }) {
-            this.words.find(word => word.word === wordToEdit).word = newWord;
-            await api.lists().editWord({"addWord": newWord, "deleteWord": wordToEdit});
+            try {
+                this.words.find(word => word.word === wordToEdit).word = newWord;
+                await api.lists().editWord({"addWord": newWord, "deleteWord": wordToEdit});    
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+            }
         }
     },
 

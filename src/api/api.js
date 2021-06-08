@@ -8,17 +8,14 @@ export default {
             suspectsList: async () => {
                 return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/suspects');
             },
-            usersList: async () => {
-                return await axios.get('http://localhost:3000/users');
-            },
             recentPosts: async () => {
-                return await axios.get('http://localhost:3000/recentPosts');
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/posts/recent');
             },
             addNewWord: async (newWord) => {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/add', newWord);
             },
             deleteWord: async (wordToDelete) => {
-                return await axios.delete('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/delete', wordToDelete);
+                return await axios.delete('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words', wordToDelete);
             },
             editWord: async (wordsToReplace) => {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/replace', wordsToReplace);
