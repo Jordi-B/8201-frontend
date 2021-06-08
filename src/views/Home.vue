@@ -18,6 +18,7 @@
             <v-row>
         <PostMonitor class="post-monitor"/>
         <v-spacer/>
+        <HeatMap/>
         <commonWords class="common-words"></commonWords>
         </v-row>
         </v-col>
@@ -30,13 +31,18 @@
 import PostMonitor from '../components/PostMonitor';
 import commonWords from '../components/commonWords';
 import TitledInfo from '../components/TitledInfo';
+import HeatMap from '../components/HeatMap';
 
 export default {
     name: 'Home',
     components: {
         PostMonitor,
         commonWords,
-        TitledInfo
+        TitledInfo,
+        HeatMap
+    },
+    data () {
+        return {}
     }
 }
 </script>
