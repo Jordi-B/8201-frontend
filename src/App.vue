@@ -34,7 +34,6 @@ export default {
   background-color: #22223b;
 }
 .container {  
-  display: flex;
   justify-content: space-around;
   align-items: center;
 }

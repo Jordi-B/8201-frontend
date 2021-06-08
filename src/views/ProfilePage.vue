@@ -3,8 +3,15 @@
     <v-row>
         <person-details :person="person" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
     </v-row>
-    <v-row>
-        <titled-info bgColor="black" amountColor="red" amount="90" title=" שלום מה נשמע איתכם"></titled-info>
+    <v-row class="mt-3">
+        <v-col cols="2">
+        </v-col>
+        <v-col
+        cols="2">
+            <titled-info bgColor="black" amountColor="red" amount="90" title=" שלום מה נשמע איתכם"></titled-info>
+        </v-col>
+        <v-col cols="8">
+        </v-col>
     </v-row>
 </v-container>
 </template>
@@ -40,5 +47,7 @@ export default {
 </script>
 
 <style scoped>
-
+.row{
+    padding: 10px
+}
 </style>

@@ -3,7 +3,7 @@
     :color="bgColor"
     dark
     class="mx-auto rounded-card"
-    max-width="50vw"
+    width="56vw"
     outlined
   >
   <v-container>
@@ -117,6 +117,6 @@ export default {
 
 <style scoped>
 .rounded-card{
-    border-radius:20px;
+    border-radius:10px;
 }
 </style>
