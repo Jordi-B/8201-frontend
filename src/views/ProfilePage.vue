@@ -10,7 +10,13 @@
         cols="2">
             <titled-info bgColor="black" amountColor="red" amount="90" title=" שלום מה נשמע איתכם"></titled-info>
         </v-col>
-        <v-col cols="8">
+        <v-col cols="2">
+            <driver-license></driver-license>
+        </v-col>
+        <v-col cols="4">
+            <reports></reports>
+        </v-col>
+        <v-col cols="2">
         </v-col>
     </v-row>
 </v-container>
@@ -19,12 +25,16 @@
 <script>
 import PersonDetails from '../components/PersonDetails.vue';
 import TitledInfo from '../components/TitledInfo.vue';
+import reports from "../components/reports.vue";
+import driverLicense from "../components/driverLicense.vue";
 
 export default {
     name: 'ProfilePage',
     components: {
         PersonDetails,
-        TitledInfo
+        TitledInfo,
+        reports,
+        driverLicense
     },
     methods : {
       changeWantedState : function () {
