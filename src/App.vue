@@ -68,6 +68,13 @@ html {
 .one {
   font-weight: bolder;
   color: red;
-;
+}
+
+::-webkit-scrollbar {
+    width: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(163, 163, 163);
 }
 </style>
