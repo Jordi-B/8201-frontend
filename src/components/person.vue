@@ -24,7 +24,7 @@
         outlined
         rounded
         text
-        to="/profile"
+        :to="`/profile/${somePerson.id}`"
     class="infoText profileButotn">
         מעבר לפרופיל
          <v-icon
