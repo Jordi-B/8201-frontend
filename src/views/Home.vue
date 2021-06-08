@@ -2,12 +2,12 @@
 <v-container>
     <v-row>
         <v-spacer/>
-        <v-col md="8">
+        <v-col md="7">
         <v-row class="top-container">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box last"></div>
+            <TitledInfo bgColor="#2e303f" amountColor="#2dc653" amount="57" title="חשודים"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#cbc0d3" amount="34" title="מבוקשים"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#e5383b" amount="7" title="נעצרו"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#619cd4" amount="343" title="פוסטים"></TitledInfo>
         </v-row>
         </v-col>
         <v-spacer/>
@@ -29,12 +29,14 @@
 <script>
 import PostMonitor from '../components/PostMonitor';
 import commonWords from '../components/commonWords';
+import TitledInfo from '../components/TitledInfo';
 
 export default {
     name: 'Home',
     components: {
         PostMonitor,
-        commonWords
+        commonWords,
+        TitledInfo
     }
 }
 </script>
@@ -53,7 +55,9 @@ export default {
 .top-container {
     display: flex;
     justify-content: space-between;
-    margin: 4vw;
+    margin-top: 6vh;
+    margin-bottom: 5vh;
+    margin-right: 2.7vw;
 }
 
 .box {

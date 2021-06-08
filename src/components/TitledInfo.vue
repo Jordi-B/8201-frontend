@@ -1,20 +1,20 @@
 <template>
     <v-card 
-    elevation="2" 
+    elevation="8" 
     :color="bgColor"
     dark
     class="mx-auto rounded-card"
-    max-width="10vw"
+    width="10vw"
     height="20vh"
     outlined>
         <v-container>
             <v-row>
-                <h1 class="mx-auto my-1 text-center">
+                <h1 class="mx-auto my-1 text-center h1-title">
                     {{title}}
                 </h1>
             </v-row>
             <v-row>
-                <h1 class="mx-auto my-2" v-bind:style="{color :amountColor}">{{amount}}</h1>
+                <h1 class="mx-auto my-2 amount" v-bind:style="{color :amountColor}">{{amount}}</h1>
             </v-row>
         </v-container>
     </v-card>
@@ -52,5 +52,13 @@ export default {
 .rounded-card{
     border-radius:20px;
     font-family: 'Heebo', sans-serif !important;
+}
+
+.h1-title {
+    font-weight: lighter;
+}
+
+.amount {
+    font-size: 3.5vw;
 }
 </style>

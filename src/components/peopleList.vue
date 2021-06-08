@@ -35,6 +35,7 @@ export default {
 }
 .listCard {
     background-color: #111633 !important;
+    overflow: auto;
 }
 .red {
     border: 0.1px solid #942226 !important;
@@ -48,10 +49,6 @@ export default {
 }
 
 ::-webkit-scrollbar {
-    width: 2.5px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgb(163, 163, 163);
+    width: 0;
 }
 </style>
