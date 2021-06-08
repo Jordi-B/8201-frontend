@@ -8,14 +8,14 @@
     <v-list-item three-line>
       <v-list-item-content>
         <v-list-item-title class="text-h5 mb-1 infoText">
-          {{somePerson.firstName + ' ' + somePerson.lastName}}
+          {{somePerson.person.firstName + ' ' + somePerson.person.lastName}}
         </v-list-item-title>
-        <v-list-item-subtitle class="infoText">{{somePerson.id}}</v-list-item-subtitle>
+        <v-list-item-subtitle class="infoText">{{somePerson.person.id}}</v-list-item-subtitle>
       </v-list-item-content>
       <v-img class="urlImage"
         max-height="7vh"
         max-width="5vw"
-        :src="somePerson.person_img_url"
+        :src="somePerson.person.personImageURL"
         ></v-img>
     </v-list-item>
 

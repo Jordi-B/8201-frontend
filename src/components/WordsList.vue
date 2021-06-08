@@ -84,18 +84,21 @@ export default {
     },
 
     methods: {
-        addNewWord() {
+        async addNewWord() {
             this.words.push({ word: this.newWord });
+            await api.lists().addNewWord({"word": this.newWord});
             this.newWord = '';
             this.dialog = false;
         },
 
-        deleteWord(wordTitle) {
+        async deleteWord(wordTitle) {
             this.words = this.words.filter(word => word.word !== wordTitle);
+            await api.lists().deleteWord({"word": this.wordTitle});
         },
 
-        editWord({ wordToEdit, newWord }) {
+        async editWord({ wordToEdit, newWord }) {
             this.words.find(word => word.word === wordToEdit).word = newWord;
+            await api.lists().editWord({"addWord": newWord, "deleteWord": wordToEdit});
         }
     },
 

@@ -44,7 +44,7 @@ export default {
     const response = await api.lists().suspectsList();
     const allSuspects = response.data;
     allSuspects.forEach(sus => {
-      sus.isWanted ? this.wanteds.push(sus) : this.suspects.push(sus); 
+      sus.wanted ? this.wanteds.push(sus) : this.suspects.push(sus); 
     });
   }
 }
