@@ -89,7 +89,7 @@ export default {
         }
     },
     async mounted() {
-        const response = await api.profile().getProfileById(this.$route.params.id);
+        const response = await api.profile().getProfileById(this.personId);
         this.suspectDetails = response.data;
     },
     props: {
@@ -100,7 +100,11 @@ export default {
         wantedButtonStatus: {
             type: Boolean,
             required: true
-        }
+        },
+        personId: {
+            type: String,
+            required: true    
+        },
     },
     computed: {
         state_color : function () {

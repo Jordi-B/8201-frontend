@@ -25,7 +25,7 @@
 <script>
 import PersonDetails from '../components/PersonDetails.vue';
 import TitledInfo from '../components/TitledInfo.vue';
-import reports from "../components/reports.vue";
+import Reports from "../components/reports.vue";
 import driverLicense from "../components/driverLicense.vue";
 import api from "../api/api";
 
@@ -34,12 +34,12 @@ export default {
     components: {
         PersonDetails,
         TitledInfo,
-        reports,
+        Reports,
         driverLicense
     },
     methods : {
       changeWantedState : function () {
-        this.person.is_wanted = !this.person.is_wanted
+        this.person.wanted = !this.person.wanted
       }
     },
     async mounted() {

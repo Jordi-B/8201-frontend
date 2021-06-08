@@ -4,8 +4,8 @@
     :color="bgColor"
     dark
     class="mx-auto rounded-card"
-    width="10vw"
-    height="20vh"
+    width="200"
+    height="200"
     outlined>
         <v-container>
             <v-row>
