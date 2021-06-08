@@ -32,7 +32,7 @@
         </v-card-text>
         <span v-if="alreadyExists" class="error-span">המילה כבר קיימת</span>
         <v-text-field class="dialog-input" v-model="newWord"></v-text-field>
-        <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''">סגור</v-btn>
+        <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''; alreadyExists = false;">סגור</v-btn>
         <v-btn color="blue darken-1" text @click="addNewWord">שמור</v-btn>
     </v-card>
     </v-dialog>
