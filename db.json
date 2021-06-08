@@ -6,7 +6,13 @@
       { "word": "לרצוח", "counter": 57, "percentageOfPosts": 34 },
       { "word": "סכין", "counter": 57, "percentageOfPosts": 34 },
       { "word": "רצח", "counter": 57, "percentageOfPosts": 34 },
-      { "word": "שוקי", "counter": 57, "percentageOfPosts": 34 }
+      { "word": "טרור", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "פיגוע", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "נזק", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "מחבל", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "להסית", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "לחבל", "counter": 57, "percentageOfPosts": 34 },
+      { "word": "להרביץ", "counter": 57, "percentageOfPosts": 34 }
     ],
     "suspects": [
       { "id": "42354541", "firstName": "אוריה", "lastName": "אהרוני", "phoneNumber": "0523424328", "address":
@@ -16,7 +22,19 @@
       { "id": "40354341", "firstName": "שוקי", "lastName": "שוקי", "phoneNumber": "0523424328", "address":
       "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 3, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
       { "id": "41354341", "firstName": "שוקי", "lastName": "בבה", "phoneNumber": "0523424328", "address":
-      "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 4, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" }
+      "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 4, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" },
+      { "id": "42354541", "firstName": "אוריה", "lastName": "אהרוני", "phoneNumber": "0523424328", "address":
+        "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 5, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" },
+        { "id": "42354541", "firstName": "ספיר", "lastName": "רוזן", "phoneNumber": "0523424328", "address":
+        "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 6, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
+        { "id": "40354341", "firstName": "שוקי", "lastName": "שוקי", "phoneNumber": "0523424328", "address":
+        "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 7, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
+        { "id": "42354541", "firstName": "אוריה", "lastName": "אהרוני", "phoneNumber": "0523424328", "address":
+          "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 8, "isWanted": true, "started": "2012-04-23T18:25:43.511Z" },
+          { "id": "42354541", "firstName": "ספיר", "lastName": "רוזן", "phoneNumber": "0523424328", "address":
+          "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 9, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" },
+          { "id": "40354341", "firstName": "שוקי", "lastName": "שוקי", "phoneNumber": "0523424328", "address":
+          "holon 15", "person_img_url": "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png", "personId": 10, "isWanted": false, "started": "2012-04-23T18:25:43.511Z" }
     ],
     
     "users": [
@@ -28,12 +46,20 @@
 
     "recentPosts": [
         { "person": { "firstName": "יאיר", "lastName": "כהן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
-          "badWords": ["רצח", "דקירה"], "postDate": "2021-10-23T18:25:43.511Z" },
+          "badWords": ["רצח", "דקירה"], "postDate": "2021-11-23T18:25:43.511Z" },
           { "person": { "firstName": "שוקי", "lastName": "מלמיליאן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
-          "badWords": ["מוות"], "postDate": "2021-04-23T18:25:43.511Z" },
+          "badWords": ["מוות"], "postDate": "2021-12-23T18:25:43.511Z" },
           { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
-          "badWords": ["הסתה", "שוד"], "postDate": "2020-04-23T19:25:43.511Z" },
+          "badWords": ["הסתה", "שוד"], "postDate": "2020-10-23T19:25:43.511Z" },
           { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
-          "badWords": ["הסתה", "שוד"], "postDate": "2020-04-23T19:25:43.511Z" }
+          "badWords": ["הסתה", "שוד"], "postDate": "2020-09-23T19:25:43.511Z" },
+            { "person": { "firstName": "יאיר", "lastName": "כהן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+            "badWords": ["רצח", "דקירה"], "postDate": "2021-08-23T18:25:43.511Z" },
+            { "person": { "firstName": "שוקי", "lastName": "מלמיליאן", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+            "badWords": ["מוות"], "postDate": "2021-07-23T18:25:43.511Z" },
+            { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+            "badWords": ["הסתה", "שוד"], "postDate": "2020-06-23T19:25:43.511Z" },
+            { "person": { "firstName": "יהונתן", "lastName": "גונזלס", "person_img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alesso_profile.png/467px-Alesso_profile.png" },
+            "badWords": ["הסתה", "שוד"], "postDate": "2020-05-23T19:25:43.511Z" }
         ]
   }

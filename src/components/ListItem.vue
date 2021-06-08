@@ -65,6 +65,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
+
 .list-item {
     background-color: rgb(61, 61, 131);
     text-align: right;
@@ -72,9 +78,14 @@ export default {
     border-radius: 2px;
 }
 
+.list-item:hover {
+    opacity: 0.5;
+}
+
 .title {
     color: white;
     margin-right: 1vh;
+    font-family: 'Heebo', sans-serif !important;
 }
 
 .pencil {

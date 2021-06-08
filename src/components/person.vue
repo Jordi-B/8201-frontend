@@ -24,7 +24,7 @@
         outlined
         rounded
         text
-        to="/profile"
+        :to="`/profile/${somePerson.id}`"
     class="infoText profileButotn">
         מעבר לפרופיל
          <v-icon
@@ -47,6 +47,11 @@
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .personCard {
     background-color: #2e303f !important;
     margin-bottom: 1vh;
@@ -54,6 +59,11 @@
 .infoText {
     color: #ffffff !important;
     direction: rtl;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.text-h5 {
+  font-family: 'Heebo', sans-serif !important;
 }
 .profileButotn {
     background-color: #6c757d;

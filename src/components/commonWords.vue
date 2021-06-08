@@ -1,16 +1,24 @@
 <template>
     <div>
-        <v-card max-width="18vw"
-        height="90vh"
+        <span class="text-h6 card-title">מילים נפוצות</span>
+        <v-card width="16vw"
+        height="53vh"
         class="listCard"
         elevation=11>
-        <p class="text-h3 text-center listTitle">מילים</p>
-        <word :currentWord="currentWord"></word>
+        <div class="container listText titles-container">
+            <p>כמות</p>
+            <p>שימוש</p>
+            <p>מילה</p>
+        </div>
+        <div v-for="(currentWord, index) in commonWords" :key="index">
+            <word :currentWord="currentWord"></word>
+        </div>
         </v-card>
     </div>
 </template>
 
 <script>
+import api from '../api/api';
 import word from './word';
 export default {
     components: {
@@ -18,25 +26,52 @@ export default {
     },
     data() {
         return {
-            currentWord: { "word": "לדקור", "counter": 57, "percentageOfPosts": 34 }
+            commonWords: []
         }
+    },
+    async mounted() {
+        const response = await api.lists().wordsList();
+        this.commonWords = response.data;
     }
 }
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+* {
+    font-family: 'Heebo', sans-serif !important;
+}
 .listCard {
     background-color: #111633 !important;
+    overflow: auto;
     /* display: flex;
     justify-content: center; */
+    border: 2px solid #1e2238 !important;
 }
 .red {
     border: 0.1px solid #942226 !important;
 }
-.yellow {
-    border: 0.1px solid #9c8d34 !important;
-}
-.listTitle {
+.listText p {
     color: #ffffff;
+    font-weight: bolder;
+}
+.titles-container {
+    height:  1vh;
+    margin-top: 1.5vh;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.card-title {
+    color: #ffffff;
+    direction: rtl;
+    display: block;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.container {  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>

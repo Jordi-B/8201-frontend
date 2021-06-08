@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card max-width="18vw"
+        <v-card max-width="16vw"
         height="8vh"
         elevation=11
         class="wordCard">
@@ -30,15 +30,26 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
 .wordCard {
     background-color: #2e303f !important;
-    margin-bottom: 1vh;
+    margin-bottom: 0.25vh;
     display: flex;
     justify-content: space-evenly;
+    font-family: 'Heebo', sans-serif !important;
 }
 .infoText {
+    font-family: 'Secular One', sans-serif !important;
     color: #ffffff !important;
     color: #619cd4;
     direction: rtl;
+}
+
+.container {  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>
