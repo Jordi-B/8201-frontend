@@ -3,6 +3,7 @@ import Router from "vue-router";
 import listsPage from './views/listsPage';
 import Home from './views/Home';
 import profilePage from './views/ProfilePage';
+import permissionsPage from './views/PermissionsPage';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
             path: '/profile/:id',
             name: "ProfilePage",
             component: profilePage
+        },
+        {
+            path: '/permissions',
+            name: "PermissionsPage",
+            component: permissionsPage
         }
     ]
 });
