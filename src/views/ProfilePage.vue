@@ -9,7 +9,7 @@
         <v-col
         cols="2">
             <titled-info bgColor="#2A2B38" amountColor="#FFAC04" :amount="posts" title="מספר פוסטים בשבוע אחרון"></titled-info>
-            <HeatMap class="heat-map"/>
+            <HeatMap class="heat-map" :personId="$route.params.id"/>
         </v-col>
         <v-col cols="2">
             <driver-license class="driver-license" :personId="$route.params.id" ></driver-license>

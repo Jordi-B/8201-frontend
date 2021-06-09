@@ -15,6 +15,7 @@
 
 <script>
 import LineChart from "./LineChart.js";
+import api from '../api/api';
 
 export default {
   name: "HeatMap",
@@ -136,8 +137,10 @@ export default {
          "22", "23", "24", "25", "26", "27", "28" ].map(day => `${day}.${this.currentMonth}`);
   },
 
-  mounted() {
-      
+  async mounted() {
+      const response = await api.lists().postsAmount(this.personId);
+      const data = response.data;
+      this.posts = data;
   }
 };
 </script>
