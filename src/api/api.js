@@ -47,6 +47,9 @@ export default {
             },
             getPermissionsById : async (id) => {
                 return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/permissions/${id}`)
+            },
+            logIn: async (username, password) => {
+                return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/check', { username, password });
             }
         }
     }
