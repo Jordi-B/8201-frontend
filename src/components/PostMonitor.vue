@@ -31,7 +31,7 @@
                   :img="post.personId.personImageURL" />
     </div>
     </div>
-    <h1 class="no-results-text" v-if="filteredPosts.length === 0">לא נמצאו תוצאות</h1>
+    <h1 class="no-results-text" v-if="filteredPosts.length === 0 && !isLoading">לא נמצאו תוצאות</h1>
     </v-sheet>
 </template>
 
