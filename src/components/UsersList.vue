@@ -40,7 +40,7 @@
         <v-btn color="blue darken-1" text @click="addNewUser">שמור</v-btn>
     </v-card>
     </v-dialog>
-    <user-item>
+    <user-item :editable="false">
         <v-text-field 
         class="text-input" 
         placeholder="חפש משתמש"
@@ -50,8 +50,8 @@
         ></v-text-field>
     </user-item>
     <span class="no-words" v-if="filteredWords.length === 0">אין משתמשים</span>
-    <div v-for="user in filteredWords" :key="user.username">
-      <user-item :title="user.username" @delete="deleteWord" />
+    <div v-for="(user, index) in filteredWords" :key="index">
+      <user-item :title="user" @delete="deleteUser(user.username)" />
     </div>
     </v-card>
 </template>
@@ -75,7 +75,7 @@ export default {
             default: ""
         },
         listItems: {
-            type: Promise,
+            type: Array,
             required: true
         }
     },
@@ -83,18 +83,14 @@ export default {
         return {
             search: '',
             dialog: false,
-            users : [],
-            usename: '',
+            username: '',
             password: '',
-            alreadyExists: false
+            alreadyExists: false,
         }
-    },
-    async created () {
-        this.users = await this.listItems;
     },
     computed: {
         filteredWords() {
-            return this.users.map(user => user.username).filter(user => user.includes(this.search));
+            return this.listItems.map(user => user.username).filter(name => name.includes(this.search));
         }
     },
 

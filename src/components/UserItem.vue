@@ -5,24 +5,14 @@
     </div> -->
 
         <v-list-item class="list-item">
-            <v-list-item-icon v-if="!editing && editable">
-                <v-icon @click="editItem" class="pencil">mdi-pencil</v-icon>
-                <v-icon @click="deleteItem(title)" class="delete-button">mdi-delete</v-icon>
+            <v-list-item-icon v-if="editable">
+                <v-icon @click="deleteUser(title)" class="delete-button">mdi-delete</v-icon>
             </v-list-item-icon>
             <v-list-item-icon v-else-if="editable">
                 <v-icon @click="changeWord" class="confirm-edit-button">mdi-check-outline</v-icon>
-                <v-icon @click="editing = false" class="close-edit-button">mdi-close</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-            <v-list-item-title class="title" v-if="!editing">{{ title }}</v-list-item-title>
-            <v-text-field 
-            v-else
-            class="text-input" 
-            :placeholder="title"
-            dark
-            dense
-            v-model="newWord"
-            ></v-text-field>
+            <v-list-item-title class="title">{{ title }}</v-list-item-title>
           </v-list-item-content>
           <slot></slot>
         </v-list-item>
@@ -38,7 +28,7 @@ export default {
         },
         editable: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
 
@@ -49,14 +39,9 @@ export default {
         }
     },
     methods: {
-        deleteItem() {
+        deleteUser() {
             this.$emit('delete', this.title);
         },
-
-        editItem() {
-            this.editing = !this.editing;
-        },
-
         changeWord() {
             this.$emit('edit', { wordToEdit: this.title, newWord: this.newWord });
         }
