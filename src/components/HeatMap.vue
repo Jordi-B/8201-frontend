@@ -23,23 +23,95 @@ export default {
   },
   data() {
     return {
-    //   datacollection: {
-    //     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28" ],
-    //     datasets: [
-    //       {
-    //         data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478, 114, 106, 106, 107, 111, 133, 221, 783, 2478, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
-    //         label: "כמות פוסטים",
-    //         borderColor: "#3e95cd",
-    //         fill: false
-    //       }
-    //     ]
-    //   }
     currentMonth: 0,
     labels: [],
-    data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478, 114, 106, 106, 107, 111, 133, 221, 783, 2478, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
     label: 'כמות פוסטים',
     borderColor: '#3e95cd',
-    fill: false
+    fill: false,
+    posts: [{
+        date: '1', postCount: 1
+    },
+    {
+        date: '2', postCount: 2
+    },
+    {
+        date: '3', postCount: 5
+    },
+    {
+        date: '1', postCount: 3
+    },
+    {
+        date: '1', postCount: 9
+    },{
+        date: '1', postCount: 12
+    }
+    ,{
+        date: '1', postCount: 15
+    },
+    {
+        date: '1', postCount: 18
+    },
+    {
+        date: '1', postCount: 26
+    },
+    {
+        date: '1', postCount: 20
+    },
+    {
+        date: '1', postCount: 20
+    },
+    {
+        date: '1', postCount: 5
+    },
+    {
+        date: '1', postCount: 7
+    },
+    {
+        date: '1', postCount: 0
+    },
+    {
+        date: '1', postCount: 0
+    },
+    {
+        date: '1', postCount: 20
+    },
+    {
+        date: '1', postCount: 10
+    },
+    {
+        date: '1', postCount: 5
+    },
+    {
+        date: '1', postCount: 7
+    },
+    
+    {
+        date: '1', postCount: 10
+    },
+    {
+        date: '1', postCount: 13
+    },
+    {
+        date: '1', postCount: 9
+    },
+    {
+        date: '1', postCount: 5
+    },
+    {
+        date: '1', postCount: 7
+    },
+        {
+        date: '1', postCount: 8
+    },
+    {
+        date: '1', postCount: 5
+    },
+    {
+        date: '1', postCount: 3
+    },
+    {
+        date: '1', postCount: 2
+    }]
     };
   },
 
@@ -48,6 +120,12 @@ export default {
           type: String,
           required: true
       }
+  },
+
+  computed:{ 
+    data() {
+        return this.posts.map(post => post.postCount);
+    }
   },
 
   created() {
