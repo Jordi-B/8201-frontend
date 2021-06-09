@@ -94,7 +94,6 @@ export default {
   async mounted() {
     const response = await api.profile().getLicenseById(this.personId);
     this.license = response.data[0];
-    console.log(typeof this.license.endingDate);
     }
   }
 </script>
