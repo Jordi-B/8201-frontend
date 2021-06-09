@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         isLoggedIn: false,
-        isManager: false
+        isManager: false,
+        username: ''
     },
     mutations: {
         SET_IS_LOGGED_IN(state, isLoggedIn) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
         },
         SET_IS_MANAGER(state, isManager){
             state.isManager = isManager;
+        },
+        SET_USERNAME(state, username){
+            state.username = username;
         }
     },
     actions: {
@@ -22,6 +26,9 @@ export default new Vuex.Store({
         },
         setIsManager(context, isManager) {
             context.commit('SET_IS_MANAGER', isManager);
+        },
+        setUsername(context, username) {
+            context.commit('SET_USERNAME', username);
         }
     }
 });

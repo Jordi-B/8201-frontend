@@ -15,7 +15,7 @@
       </v-card-title>
       <v-row>
       <h4 class="status" v-if="this.license" >
-        סטטוס {{license.status}}     
+        סטטוס {{license.status === '1' ? 'לא פעיל':'פעיל'}}     
       </h4>
       <span v-else class="status-error">לא נמצא רישיון נהיגה</span>
       </v-row>
@@ -99,7 +99,8 @@ export default {
 <style scoped>
 .status{
     margin-top: 1vh;
-    margin-left: 23vh ;
+    margin-left: 23vh;
+    color: green;
 }
 .rounded-card{
     border-radius:10px;

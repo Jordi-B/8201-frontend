@@ -50,15 +50,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setIsLoggedIn', 'setIsManager']),
+    ...mapActions(['setIsLoggedIn', 'setIsManager', 'setUsername']),
     async logIn() {
       try {
          const response = await api.profile().logIn(this.username, this.password);
-         const { manager, jwttoken } = response.data;
+         const { manager, jwttoken, username } = response.data;
+         window.localStorage.setItem('token', jwttoken);
+         window.localStorage.setItem('isManager', manager);
+         window.localStorage.setItem('username', username);
          this.wrongDetails = false;
          axios.defaults.headers.common['token'] = jwttoken;
          this.setIsLoggedIn(true);
          this.setIsManager(manager);
+         this.setUsername(username);
       } catch (err) {
          this.wrongDetails = true;
       }

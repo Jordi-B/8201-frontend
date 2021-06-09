@@ -54,9 +54,12 @@ import { mapActions } from 'vuex'
       }
     },
     methods: {
-      ...mapActions(['setIsLoggedIn']),
+      ...mapActions(['setIsLoggedIn', 'setIsManager', 'setUsername']),
       logOut() {
         this.setIsLoggedIn(false);
+        this.setIsManager(false);
+        this.setUsername('');
+        window.localStorage.clear();
       }
     }
 }

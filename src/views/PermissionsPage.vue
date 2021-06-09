@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <div v-if="$store.state.isManager">
         <v-row>
             <v-col sm="4"></v-col>
             <v-col sm="2.5">
@@ -10,6 +11,11 @@
             </v-col>
             <v-col sm="3"></v-col>
         </v-row>
+        </div>
+        <div v-else>
+            <img class="lock" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lock_font_awesome.svg/1200px-Lock_font_awesome.svg.png"/>
+            <h1 class="warning-title">אינך מורשה לצפות בעמוד זה</h1>
+        </div>
     </v-container>
 </template>
 
@@ -36,6 +42,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.lock {
+    width: 550px;
+    height: 550px;
+    object-fit: contain;
+    margin-left: 30vw;
+}
+
+.warning-title {
+    color: rgb(255, 255, 255);
+    margin-left: 34vw;
+}
 
 </style>

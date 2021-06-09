@@ -5,6 +5,9 @@
         <span class="head-title">8201</span><span> ניטור פעילות חשודה ברשתות חברתיות</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <h2 class="greeting" v-if="$store.state.isLoggedIn"> <span v-if="$store.state.isManager" class="permissions"> (הרשאות מנהל) </span>{{ `${this.$store.state.username} ,שלום` }}</h2>
+      
     </v-app-bar>
     <Sidebar v-if="this.$store.state.isLoggedIn"/>
     <v-main class="page" v-if="this.$store.state.isLoggedIn">
@@ -19,7 +22,8 @@
 <script>
 import Sidebar from './components/Sidebar.vue';
 import login from './components/login';
-// import api from './api/api';
+import { axios } from './api/api';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -27,6 +31,23 @@ export default {
     Sidebar,
     login
   },
+  methods: {
+    ...mapActions(['setIsLoggedIn', 'setIsManager', 'setUsername'])
+  },
+  created() {
+    const token = window.localStorage.getItem('token');
+    if(token) {
+         this.setIsLoggedIn(true);
+         this.setIsManager(JSON.parse(window.localStorage.getItem('isManager')));
+         this.setUsername(window.localStorage.getItem('username'));
+         axios.defaults.headers.common['token'] = token;
+    } else {
+         this.setIsLoggedIn(false);
+         this.setIsManager(false);
+         this.setUsername('');
+    }
+  }
+
 };
 </script>
 
@@ -36,7 +57,6 @@ export default {
 * {
     font-family: 'Heebo', sans-serif !important;
 }
-
 
 .form {
   text-align: center !important;
@@ -52,6 +72,13 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
+
+.permissions {
+  color: red;
+  font-size: 1vw;
+  font-weight: lighter;
+}
+
 html {
   height: 100%;
   width: 100%;

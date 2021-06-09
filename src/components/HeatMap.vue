@@ -29,6 +29,7 @@ export default {
     label: 'כמות פוסטים',
     borderColor: '#3e95cd',
     fill: false,
+    activeDay: '',
     posts: [{
         date: '1', postCount: 1
     },
@@ -147,6 +148,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.active-day-title {
+    color: white;
+}
+
+.active-day {
+    color: coral;
+    margin-left: 4.5vw;
+}
 h3 {
   margin: 40px 0 0;
 }
