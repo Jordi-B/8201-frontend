@@ -15,10 +15,19 @@
       </v-col>
       </v-row>
     </v-card-text>
+            <div v-if="!isLoading">
             <div v-for="(per, index) in filteredPeopleList" :key=index>
                 <person :somePerson="per"></person>
             </div>
-            <h1 class="no-results-text" v-if="filteredPeopleList.length === 0">לא נמצאו תוצאות</h1>
+            </div>
+            <h1 class="no-results-text" v-if="filteredPeopleList.length === 0 && !isLoading">לא נמצאו תוצאות</h1>
+                <v-progress-circular
+                indeterminate
+                color="blue"
+                class="load-bar"
+                size="80"
+                v-if="isLoading"
+                ></v-progress-circular>
         </v-card>
     </div>
 </template>
@@ -31,7 +40,8 @@ export default {
     },
     data() {
         return {
-            filterInput: ''
+            filterInput: '',
+            isLoading: true
         }
     },
     props: {
@@ -44,6 +54,10 @@ export default {
         filteredPeopleList() {
             return this.peopleList.filter(person => `${person.person.firstName} ${person.person.lastName}`.includes(this.filterInput));
         }
+    },
+
+    created() {
+        setTimeout(() => { this.isLoading = false }, 1000)
     }
 }
 </script>
@@ -67,6 +81,11 @@ export default {
 .listTitle {
     color: #ffffff;
     font-family: 'Heebo', sans-serif !important;
+}
+
+.load-bar {
+    margin-left: 7vw;
+    margin-top: 15vw;
 }
 
 .title {

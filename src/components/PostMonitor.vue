@@ -16,11 +16,20 @@
       </v-col>
       </v-row>
     </v-card-text>
+            <v-progress-circular
+            indeterminate
+            color="blue"
+            v-if="isLoading"
+            class="load-bar"
+            size="80"
+            ></v-progress-circular>
+            <div v-else>
     <div v-for="post in filteredPosts" :key="post.publishDate">
       <PostBubble :author="post.personId.firstName + ' ' + post.personId.lastName"
                   :words="post.listOfBadWords"
                   :postDate="post.publishDate"
                   :img="post.personId.personImageURL" />
+    </div>
     </div>
     <h1 class="no-results-text" v-if="filteredPosts.length === 0">לא נמצאו תוצאות</h1>
     </v-sheet>
@@ -38,7 +47,8 @@ export default {
     data() {
         return {
             filterInput: '',
-            posts: []
+            posts: [],
+            isLoading: true
         }
     },
 
@@ -55,8 +65,10 @@ export default {
     async mounted() {
         const response = await api.lists().recentPosts();
         const data = response.data;
+        this.isLoading = false;
         this.posts = data;
     }
+    
 }
 </script>
 
@@ -73,6 +85,11 @@ export default {
     height: 53vh;
     overflow: auto;
         border: 2px solid #1e2238 !important;
+}
+
+.load-bar {
+    margin-left: 14vw;
+    margin-top: 5vw;
 }
 
 .text-h2 {

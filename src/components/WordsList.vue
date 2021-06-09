@@ -45,7 +45,14 @@
         v-model="search"
         ></v-text-field>
     </ListItem>
-    <span class="no-words" v-if="filteredWords.length === 0">מילה לא קיימת</span>
+    <span class="no-words" v-if="filteredWords.length === 0 && !isLoading">מילה לא קיימת</span>
+    <v-progress-circular
+    indeterminate
+    color="blue"
+    v-if="isLoading"
+    class="load-bar"
+    size="80"
+    ></v-progress-circular>
     <div v-for="word in filteredWords" :key="word">
       <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
     </div>
@@ -77,7 +84,8 @@ export default {
             dialog: false,
             newWord: '',
             words: [],
-            alreadyExists: false
+            alreadyExists: false,
+            isLoading: true
         }
     },
     computed: {
@@ -126,6 +134,7 @@ export default {
     async mounted() {
         const response = await api.lists().wordsList();
         const data = response.data;
+        this.isLoading = false;
         this.words = data;
     }
 }
@@ -148,6 +157,10 @@ export default {
 
 .no-words {
     color:crimson;
+}
+
+.load-bar {
+    margin-top: 10vw;
 }
 
 .dialog-card {

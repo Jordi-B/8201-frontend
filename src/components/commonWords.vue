@@ -10,8 +10,17 @@
             <p>שימוש</p>
             <p>מילה</p>
         </div>
+            <v-progress-circular
+            indeterminate
+            color="blue"
+            v-if="isLoading"
+            class="load-bar"
+            size="80"
+            ></v-progress-circular>
+        <div v-else>
         <div v-for="(currentWord, index) in commonWords" :key="index">
             <word :currentWord="currentWord"></word>
+        </div>
         </div>
         </v-card>
     </div>
@@ -26,11 +35,13 @@ export default {
     },
     data() {
         return {
-            commonWords: []
+            commonWords: [],
+            isLoading: true
         }
     },
     async mounted() {
         const response = await api.lists().wordsList();
+        this.isLoading = false;
         this.commonWords = response.data;
     }
 }
@@ -67,6 +78,11 @@ export default {
     direction: rtl;
     display: block;
     font-family: 'Heebo', sans-serif !important;
+}
+
+.load-bar {
+    margin-top: 8vh;
+    margin-left: 6vw;
 }
 
 .container {  
