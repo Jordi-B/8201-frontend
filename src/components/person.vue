@@ -12,7 +12,7 @@
         </v-list-item-title>
         <v-list-item-subtitle class="infoText">{{somePerson.person.id}}</v-list-item-subtitle>
       </v-list-item-content>
-      <v-avatar height="7vh" width="7vh">
+      <v-avatar size="68">
       <v-img class="urlImage"
         :src="somePerson.person.personImageURL"
         ></v-img>        

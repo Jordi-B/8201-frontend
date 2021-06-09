@@ -11,6 +11,15 @@ export default {
             recentPosts: async () => {
                 return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/posts/recent');
             },
+            recentSuspects: async () => {
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/suspects/new');
+            },
+            recentWanted: async () => {
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/suspects/wanted/new');
+            },
+            recentReleased: async () => {
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/suspects/released/new');
+            },
             addNewWord: async (newWord) => {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/add', newWord);
             },

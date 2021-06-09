@@ -42,7 +42,8 @@ export default {
     async mounted() {
         const response = await api.lists().wordsList();
         this.isLoading = false;
-        this.commonWords = response.data;
+        const words = response.data;
+        this.commonWords = words.filter(word => word.percentageOfPosts > 0).sort((first, second) => first.counter - second.counter);
     }
 }
 </script>
@@ -56,8 +57,6 @@ export default {
 .listCard {
     background-color: #111633 !important;
     overflow: auto;
-    /* display: flex;
-    justify-content: center; */
     border: 2px solid #1e2238 !important;
 }
 .red {
