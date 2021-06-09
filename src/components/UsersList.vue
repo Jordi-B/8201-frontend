@@ -1,6 +1,6 @@
 <template>
     <v-card class="words-list-card"
-    width="12vw"
+    width="16vw"
     height="90vh"
     elevation="11"
     outlined
@@ -21,45 +21,49 @@
     
     <v-card class="dialog-card">
         <v-card-title
-        class="headline blue darken-3 dialog-title"
+        class="headline blue darken-3 dialog-title "
+        
         primary-title
         >
-        הוספת מילה חדשה למאגר המילים המנוטרות
+        <div id="dialog-title">
+           הוספת משתמש חדש 
+        </div>
         </v-card-title>
 
         <v-card-text>
-            מילה זו תיווסף למאגר המילים המנוטרות, חישבו היטב לפני הוספת מילה חדשה למאגר
+            משתמש זה יתווסף לרשימת המשתמשים
         </v-card-text>
-        <span v-if="alreadyExists" class="error-span">המילה כבר קיימת</span>
-        <v-text-field class="dialog-input" v-model="newWord"></v-text-field>
-        <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''; alreadyExists = false;">סגור</v-btn>
-        <v-btn color="blue darken-1" text @click="addNewWord">שמור</v-btn>
+        <span v-if="alreadyExists" class="error-span">המשתמש קיים</span>
+        <v-text-field class="dialog-input mx-3" v-model="username" placeholder='שם משתמש'></v-text-field>
+        <v-text-field class="dialog-input mx-3" v-model="password" type="password" placeholder='סיסמה'></v-text-field>
+        <v-btn color="blue darken-1" text @click="dialog = false; username = ''; password = ''; alreadyExists = false;">סגור</v-btn>
+        <v-btn color="blue darken-1" text @click="addNewUser">שמור</v-btn>
     </v-card>
     </v-dialog>
-    <ListItem>
+    <user-item>
         <v-text-field 
         class="text-input" 
-        placeholder="חפש מילה"
+        placeholder="חפש משתמש"
         dark
         dense
         v-model="search"
         ></v-text-field>
-    </ListItem>
-    <span class="no-words" v-if="filteredWords.length === 0">מילה לא קיימת</span>
-    <div v-for="word in filteredWords" :key="word">
-      <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
+    </user-item>
+    <span class="no-words" v-if="filteredWords.length === 0">אין משתמשים</span>
+    <div v-for="user in filteredWords" :key="user.username">
+      <user-item :title="user.username" @delete="deleteWord" />
     </div>
     </v-card>
 </template>
 
 <script>
-import ListItem from './ListItem.vue';
+import UserItem from './UserItem.vue';
 import api from '../api/api';
 
 export default {
-    name: 'WordsList',
+    name: 'UsersList',
     components: {
-        ListItem
+        UserItem
     },
     props: {
         title: {
@@ -69,32 +73,41 @@ export default {
         description: {
             type: String,
             default: ""
+        },
+        listItems: {
+            type: Promise,
+            required: true
         }
     },
     data() {
         return {
             search: '',
             dialog: false,
-            newWord: '',
-            words: [],
+            users : [],
+            usename: '',
+            password: '',
             alreadyExists: false
         }
     },
+    async created () {
+        this.users = await this.listItems;
+    },
     computed: {
         filteredWords() {
-            return this.words.map(word => word.word).filter(word => word.includes(this.search));
+            return this.users.map(user => user.username).filter(user => user.includes(this.search));
         }
     },
 
     methods: {
-        async addNewWord() {
+        async addNewUser() {
             try {
-                if(this.words.find(word => word.word === this.newWord)) {
+                if(this.users.find(user => user.username === this.username)) {
                     this.alreadyExists = true;
                 } else {
-                    this.words.push({ word: this.newWord });
-                    await api.lists().addNewWord({word: this.newWord});
-                    this.newWord = '';
+                    this.users.push({ user: this.userName });
+                    await api.permissions().addNewUser(this.username, this.password);
+                    this.username = '';
+                    this.password = '';
                     this.alreadyExists = false;
                     this.dialog = false;
                 }
@@ -104,30 +117,15 @@ export default {
             }
         },
 
-        async deleteWord(wordTitle) {
+        async deleteUser(usernameToDelete) {
             try {
-                this.words = this.words.filter(word => word.word !== wordTitle);
-                await api.lists().deleteWord({"word": wordTitle});
-            } catch (err) {
-                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
-            }
-        },
-
-        async editWord({ wordToEdit, newWord }) {
-            try {
-                this.words.find(word => word.word === wordToEdit).word = newWord;
-                await api.lists().editWord({"addWord": newWord, "deleteWord": wordToEdit});    
+                this.users = this.users.filter(user => user.username !== usernameToDelete);
+                await api.permissions().deleteUser({usernameToDelete});
             } catch (err) {
                 alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
             }
         }
     },
-
-    async mounted() {
-        const response = await api.lists().wordsList();
-        const data = response.data;
-        this.words = data;
-    }
 }
 </script>
 
@@ -144,6 +142,9 @@ export default {
     border: 2px solid #1e2238 !important;
     font-family: 'Heebo', sans-serif !important;
     overflow: auto;
+}
+#dialog-title {
+    margin-left: 125px;
 }
 
 .no-words {

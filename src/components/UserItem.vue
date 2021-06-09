@@ -30,6 +30,7 @@
 
 <script>
 export default {
+    name: 'ListItem',
     props: {
         title: {
             type: String,

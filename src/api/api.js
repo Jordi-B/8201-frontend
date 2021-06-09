@@ -37,5 +37,21 @@ export default {
                 return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/permissions/${id}`)
             }
         }
+    },
+    permissions()  {
+        return {
+            getAllManagers: async () => {
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/managers')
+            },
+            getAllUsers: async () => {
+                return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/managers/false')
+            },
+            addNewUser: async (userName, passWord) => {
+                return await axios.post("",{userName, passWord})
+            },
+            deleteUser: async (userName) => {
+                return await axios.delete("",{userName})
+            }
+        }
     }
 }
