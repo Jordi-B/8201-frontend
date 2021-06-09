@@ -36,11 +36,11 @@
       <v-list-item-content>
         <v-list-item-title class="text mb-1 text-lg-right">
             <strong>פלאפון</strong>
-          {{person.phone_number}}
+          {{suspectDetails.person.phoneNumber}}
         </v-list-item-title>
         <div class="text-overline-h4 mb-4 text-lg-right">
           <strong>כתובת </strong>
-          {{person.address}}
+          {{suspectDetails.person.address}}
         </div>
         
       </v-list-item-content>
@@ -53,10 +53,10 @@
     <v-list-item two-line>
       <v-list-item-content>
         <div class="text-overline-h4 mb-4 text-lg-right">
-          <strong>{{person.first_name + " " + person.last_name}}</strong>
+          <strong>{{suspectDetails.person.firstName + " " + suspectDetails.person.lastName}}</strong>
         </div>
         <v-list-item-title class="text mb-1 text-lg-right">
-          {{person.id}}
+          {{suspectDetails.personId}}
         </v-list-item-title>
       </v-list-item-content>
 
@@ -80,12 +80,19 @@
 </template>
 
 <script>
+import api from "../api/api";
+
 export default {
+    data () {
+        return { 
+            suspectDetails : {}
+        }
+    },
+    async mounted() {
+        const response = await api.profile().getProfileById(this.personId);
+        this.suspectDetails = response.data;
+    },
     props: {
-        person: {
-            type: Object,
-            required: true
-        },
         bgColor: {
             type: String,
             required: true
@@ -93,17 +100,21 @@ export default {
         wantedButtonStatus: {
             type: Boolean,
             required: true
-        }
+        },
+        personId: {
+            type: String,
+            required: true    
+        },
     },
     computed: {
         state_color : function () {
-            return this.person.is_wanted ? 'red' : 'green';
+            return this.suspectDetails.wanted ? 'red' : 'green';
         },
         lock_icon : function () {
-            return this.person.is_wanted ? 'fas fa-lock' : 'fas fa-lock-open';
+            return this.suspectDetails.wanted ? 'fas fa-lock' : 'fas fa-lock-open';
         },
         lock_title : function () {
-            return this.person.is_wanted ? 'מבוקש' : 'חשוד';
+            return this.suspectDetails.wanted ? 'מבוקש' : 'חשוד';
         }
     },
     methods:{

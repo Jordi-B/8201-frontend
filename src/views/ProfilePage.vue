@@ -1,20 +1,20 @@
 <template>
 <v-container>
     <v-row>
-        <person-details :person="person" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
+        <person-details :personId="$route.params.id" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
     </v-row>
     <v-row class="mt-3">
         <v-col cols="2">
         </v-col>
         <v-col
         cols="2">
-            <titled-info bgColor="black" amountColor="red" :amount="90" title=" שלום מה נשמע איתכם"></titled-info>
+            <titled-info bgColor="#2A2B38" amountColor="#FFAC04" :amount="posts" title="מספר פוסטים בשבוע אחרון"></titled-info>
         </v-col>
         <v-col cols="2">
-            <driver-license></driver-license>
+            <driver-license :personId="$route.params.id" ></driver-license>
         </v-col>
         <v-col cols="4">
-            <reports></reports>
+            <reports :personId="$route.params.id"></reports>
         </v-col>
         <v-col cols="2">
         </v-col>
@@ -25,34 +25,33 @@
 <script>
 import PersonDetails from '../components/PersonDetails.vue';
 import TitledInfo from '../components/TitledInfo.vue';
-import reports from "../components/reports.vue";
+import Reports from "../components/reports.vue";
 import driverLicense from "../components/driverLicense.vue";
+import api from "../api/api";
 
 export default {
     name: 'ProfilePage',
     components: {
         PersonDetails,
         TitledInfo,
-        reports,
+        Reports,
         driverLicense
     },
     methods : {
       changeWantedState : function () {
-        this.person.is_wanted = !this.person.is_wanted
+        this.person.wanted = !this.person.wanted
       }
     },
-    data: () => ({
-      person:{
-        id: '123456798',
-        first_name: 'mor',
-        last_name: 'steinberg',
-        phone_number: '0585676543',
-        address: 'דן 8 מיתר',
-        person_img_url: '',
-        is_wanted: false
-      },
-      wantedButton: true,   
-    })
+    async mounted() {
+        const response = await api.profile().getNumOfPostsById(this.$route.params.id);
+        this.posts = response.data;
+    },
+    data() {
+        return {
+        posts: 0,
+        wantedButton: true
+        } 
+    }
 }
 </script>
 
