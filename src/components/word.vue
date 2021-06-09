@@ -10,7 +10,7 @@
         :rotate="-90"
         :size="50"
         :width="6"
-        :value="45"
+        :value="currentWord.percentageOfPosts"
         color="#619cd4"
         sm="4">
         {{currentWord.percentageOfPosts}}%

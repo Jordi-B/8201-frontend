@@ -5,10 +5,20 @@
         class="listCard"
         elevation=11
         :class="color">
-            <p class="text-h3 text-center listTitle">{{listTitle}}</p>
-            <div v-for="(per, index) in peopleList" :key=index>
+                <v-card-text class="title-container">
+        <v-row>
+            <v-col md="3">
+      <v-text-field placeholder="סנן" v-model="filterInput" dark class="filter-search"/>
+      </v-col>
+      <v-col md="9">
+      <div class="text-h2 title">{{ listTitle }}</div>
+      </v-col>
+      </v-row>
+    </v-card-text>
+            <div v-for="(per, index) in filteredPeopleList" :key=index>
                 <person :somePerson="per"></person>
             </div>
+            <h1 class="no-results-text" v-if="filteredPeopleList.length === 0">לא נמצאו תוצאות</h1>
         </v-card>
     </div>
 </template>
@@ -19,10 +29,21 @@ export default {
     components: {
         person
     },
+    data() {
+        return {
+            filterInput: ''
+        }
+    },
     props: {
         peopleList: Array,
         listTitle: String,
         color: String
+    },
+
+    computed: {
+        filteredPeopleList() {
+            return this.peopleList.filter(person => `${person.person.firstName} ${person.person.lastName}`.includes(this.filterInput));
+        }
     }
 }
 </script>
@@ -46,6 +67,22 @@ export default {
 .listTitle {
     color: #ffffff;
     font-family: 'Heebo', sans-serif !important;
+}
+
+.title {
+    color: white;
+    direction: rtl;
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.filter-search {
+    direction: rtl;
+}
+
+.no-results-text {
+    color: #f42b03;
+    margin-top: 12.5vh;
+    text-align: center;
 }
 
 ::-webkit-scrollbar {

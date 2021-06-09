@@ -8,15 +8,15 @@
     <v-list-item three-line>
       <v-list-item-content>
         <v-list-item-title class="text-h5 mb-1 infoText">
-          {{somePerson.firstName + ' ' + somePerson.lastName}}
+          {{somePerson.person.firstName + ' ' + somePerson.person.lastName}}
         </v-list-item-title>
-        <v-list-item-subtitle class="infoText">{{somePerson.id}}</v-list-item-subtitle>
+        <v-list-item-subtitle class="infoText">{{somePerson.person.id}}</v-list-item-subtitle>
       </v-list-item-content>
+      <v-avatar height="7vh" width="7vh">
       <v-img class="urlImage"
-        max-height="7vh"
-        max-width="5vw"
-        :src="somePerson.person_img_url"
-        ></v-img>
+        :src="somePerson.person.personImageURL"
+        ></v-img>        
+      </v-avatar>
     </v-list-item>
 
     <v-card-actions>
@@ -24,7 +24,7 @@
         outlined
         rounded
         text
-        :to="`/profile/${somePerson.id}`"
+        :to="`/profile/${somePerson.person.id}`"
     class="infoText profileButotn">
         מעבר לפרופיל
          <v-icon
@@ -59,6 +59,7 @@
 .infoText {
     color: #ffffff !important;
     direction: rtl;
+    margin-right: 1vw;
     font-family: 'Heebo', sans-serif !important;
 }
 
@@ -69,7 +70,6 @@
     background-color: #6c757d;
 }
 .urlImage {
-    margin-left: 1vw;
-    border-radius: 50%;
+
 }
 </style>

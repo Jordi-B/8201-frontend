@@ -37,6 +37,9 @@ export default {
         PostMonitor,
         commonWords,
         TitledInfo
+    },
+    data () {
+        return {}
     }
 }
 </script>

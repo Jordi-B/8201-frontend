@@ -3,7 +3,7 @@
         <img :src="img" class="author-pic">
         <div class="author text"> {{ author }} </div> 
         <div class="text"> השתמש במילים </div> 
-        <div class="words text"> {{ words.join(', ') }} </div>
+        <div class="words text"> {{ parsedWords }} </div>
         <div class="time">{{ timeSince }}</div>
     </div>
     
@@ -36,6 +36,9 @@ export default {
     computed: {
         timeSince() {
             return moment(this.postDate).fromNow();
+        },
+        parsedWords() {
+            return this.words.map(word => word.word).join(', ');
         }
     }
 }

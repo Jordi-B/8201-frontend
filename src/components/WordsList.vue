@@ -30,8 +30,9 @@
         <v-card-text>
             מילה זו תיווסף למאגר המילים המנוטרות, חישבו היטב לפני הוספת מילה חדשה למאגר
         </v-card-text>
+        <span v-if="alreadyExists" class="error-span">המילה כבר קיימת</span>
         <v-text-field class="dialog-input" v-model="newWord"></v-text-field>
-        <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''">סגור</v-btn>
+        <v-btn color="blue darken-1" text @click="dialog = false; newWord = ''; alreadyExists = false;">סגור</v-btn>
         <v-btn color="blue darken-1" text @click="addNewWord">שמור</v-btn>
     </v-card>
     </v-dialog>
@@ -44,6 +45,7 @@
         v-model="search"
         ></v-text-field>
     </ListItem>
+    <span class="no-words" v-if="filteredWords.length === 0">מילה לא קיימת</span>
     <div v-for="word in filteredWords" :key="word">
       <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
     </div>
@@ -74,7 +76,8 @@ export default {
             search: '',
             dialog: false,
             newWord: '',
-            words: []
+            words: [],
+            alreadyExists: false
         }
     },
     computed: {
@@ -84,18 +87,39 @@ export default {
     },
 
     methods: {
-        addNewWord() {
-            this.words.push({ word: this.newWord });
-            this.newWord = '';
-            this.dialog = false;
+        async addNewWord() {
+            try {
+                if(this.words.find(word => word.word === this.newWord)) {
+                    this.alreadyExists = true;
+                } else {
+                    this.words.push({ word: this.newWord });
+                    await api.lists().addNewWord({word: this.newWord});
+                    this.newWord = '';
+                    this.alreadyExists = false;
+                    this.dialog = false;
+                }
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+                this.dialog = false;
+            }
         },
 
-        deleteWord(wordTitle) {
-            this.words = this.words.filter(word => word.word !== wordTitle);
+        async deleteWord(wordTitle) {
+            try {
+                this.words = this.words.filter(word => word.word !== wordTitle);
+                await api.lists().deleteWord({"word": wordTitle});
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+            }
         },
 
-        editWord({ wordToEdit, newWord }) {
-            this.words.find(word => word.word === wordToEdit).word = newWord;
+        async editWord({ wordToEdit, newWord }) {
+            try {
+                this.words.find(word => word.word === wordToEdit).word = newWord;
+                await api.lists().editWord({"addWord": newWord, "deleteWord": wordToEdit});    
+            } catch (err) {
+                alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
+            }
         }
     },
 
@@ -122,6 +146,10 @@ export default {
     overflow: auto;
 }
 
+.no-words {
+    color:crimson;
+}
+
 .dialog-card {
     text-align: center;
     font-family: 'Heebo', sans-serif !important;
@@ -143,6 +171,10 @@ export default {
 .new-item-button {
     display: inline;
     margin-bottom: 10px;
+}
+
+.error-span {
+    color: red;
 }
 
 .search-field {

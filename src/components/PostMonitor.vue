@@ -16,11 +16,11 @@
       </v-col>
       </v-row>
     </v-card-text>
-    <div v-for="post in filteredPosts" :key="post.postDate">
-      <PostBubble :author="post.person.firstName + ' ' + post.person.lastName"
-                  :words="post.badWords"
-                  :postDate="post.postDate"
-                  :img="post.person.person_img_url" />
+    <div v-for="post in filteredPosts" :key="post.publishDate">
+      <PostBubble :author="post.personId.firstName + ' ' + post.personId.lastName"
+                  :words="post.listOfBadWords"
+                  :postDate="post.publishDate"
+                  :img="post.personId.personImageURL" />
     </div>
     <h1 class="no-results-text" v-if="filteredPosts.length === 0">לא נמצאו תוצאות</h1>
     </v-sheet>
@@ -45,8 +45,8 @@ export default {
     computed: {
         filteredPosts() {
             return this.posts.filter(post => {
-                const fullName = post.person.firstName + ' ' + post.person.lastName;
-                const badWords = post.badWords.join(' ');
+                const fullName = post.personId.firstName + ' ' + post.personId.lastName;
+                const badWords = post.listOfBadWords.map(word => word.word).join(', ');
                 return fullName.includes(this.filterInput) || badWords.includes(this.filterInput);
             })
         }
