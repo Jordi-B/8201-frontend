@@ -24,7 +24,7 @@
             size="80"
             ></v-progress-circular>
             <div v-else>
-    <div v-for="post in filteredPosts" :key="post.publishDate">
+    <div v-for="(post, index) in filteredPosts" :key="index">
       <PostBubble :author="post.personId.firstName + ' ' + post.personId.lastName"
                   :words="post.listOfBadWords"
                   :postDate="post.publishDate"

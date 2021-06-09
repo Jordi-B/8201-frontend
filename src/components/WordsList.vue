@@ -14,7 +14,7 @@
     width="500"
     >
     <template v-slot:activator="{ on }">
-    <v-btn class="new-item-button" v-on="on" v-if="true" color="purple" icon outlined depressed fab x-small dark>
+    <v-btn class="new-item-button" v-on="on" v-if="$store.state.isManager" color="purple" icon outlined depressed fab x-small dark>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     </template>
@@ -54,7 +54,7 @@
     size="80"
     ></v-progress-circular>
     <div v-for="word in filteredWords" :key="word">
-      <ListItem editable :title="word" @delete="deleteWord" @edit="editWord" />
+      <ListItem :editable="$store.state.isManager" :title="word" @delete="deleteWord" @edit="editWord" />
     </div>
     </v-card>
 </template>

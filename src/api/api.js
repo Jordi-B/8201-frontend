@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'http://localhost:8083';
+const BASE_URL = 'http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz';
 // const PROD_SERVER = 'http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz';
 
 export default {
@@ -50,6 +50,12 @@ export default {
             },
             getPermissionsById : async (id) => {
                 return await axios.get(`${BASE_URL}/api/permissions/${id}`)
+            },
+            logIn: async (username, password) => {
+                return await axios.post(`${BASE_URL}/api/users/login`, { username, password });
+            },
+            toggleWanted: async (suspectId) => {
+                return await axios.patch(`${BASE_URL}/api/suspects/suspect/toggle/wanted`, { id: suspectId });
             }
         }
     }

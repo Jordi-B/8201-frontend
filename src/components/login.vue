@@ -25,6 +25,7 @@
                               type="password"
                               class="input-form"
                            ></v-text-field>
+                           <span v-if="wrongDetails" class="red-error">פרטי ההתחברות שגויים</span>
                         </v-form>
                      </v-card-text>
                      <v-card-actions>
@@ -38,20 +39,34 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-// import api from '../api/api';
+import api from '../api/api';
 export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      wrongDetails: false
     }
   },
   methods: {
-    ...mapActions(['setIsLoggedIn']),
-    logIn() {
-    //   api.profile().logIn(this.username, this.password);
-      this.setIsLoggedIn(true);
+    ...mapActions(['setIsLoggedIn', 'setIsManager']),
+    async logIn() {
+      try {
+         const response = await api.profile().logIn(this.username, this.password);
+         const { manager } = response.data;
+         this.wrongDetails = false;
+         this.setIsLoggedIn(true);
+         this.setIsManager(manager);
+      } catch (err) {
+         this.wrongDetails = true;
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+.red-error {
+   color: red;
+}
+</style>

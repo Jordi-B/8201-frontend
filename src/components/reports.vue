@@ -6,6 +6,9 @@
  צווים ודוחות
       </h1>
       </v-card-title>
+              <h3 class="error-title">
+ לא נמצאו צווים ודוחות
+      </h3>
        <v-container class="text-right">
     <v-row v-for="element in reportsList" :key="element.id">
       
@@ -88,5 +91,9 @@ export default {
 .colStyleDate{
     margin-left: 4vh;
     margin-bottom: 10vh;
+}
+
+.error-title {
+  margin-left: 9.3vw;
 }
 </style>

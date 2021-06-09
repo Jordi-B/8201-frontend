@@ -22,9 +22,10 @@
                         text
                         x-large
                         icon
+                        :disabled="!$store.state.isManager"
                         @click="updateWantedState"
                     >
-                        <v-icon :color ="state_color" :class="lock_icon"></v-icon>
+                        <v-icon :color ="state_color" :class="lock_icon"> {{ lock_icon }}</v-icon>
                     </v-btn>
                 </div>
             </v-row>
@@ -66,12 +67,11 @@
     </v-col>
     
     <v-col>
-        <v-list-item-avatar
-        tile
+        <v-avatar
         size="120"
-        color="grey"
-        class=" mx-auto"
-      ></v-list-item-avatar>
+      >
+      <v-img :src="suspectDetails.person.personImageURL"></v-img>
+      </v-avatar>
     </v-col>
 
     </v-row>
@@ -111,16 +111,18 @@ export default {
             return this.suspectDetails.wanted ? 'red' : 'green';
         },
         lock_icon : function () {
-            return this.suspectDetails.wanted ? 'fas fa-lock' : 'fas fa-lock-open';
+            return this.suspectDetails.wanted ? 'mdi-lock' : 'mdi-lock-open';
         },
         lock_title : function () {
             return this.suspectDetails.wanted ? 'מבוקש' : 'חשוד';
         }
     },
     methods:{
-      updateWantedState: function(){
-          
-         this.$emit("change-wanted-state") ;
+      async updateWantedState() {
+        if(this.$store.state.isManager) {
+          this.suspectDetails.wanted = !this.suspectDetails.wanted;
+          await api.profile().toggleWanted(this.personId);
+        }
       }
     }
 }

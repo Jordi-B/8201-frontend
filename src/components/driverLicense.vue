@@ -14,12 +14,13 @@
       </h2>
       </v-card-title>
       <v-row>
-      <h4 class="status" >
+      <h4 class="status" v-if="this.license" >
         סטטוס {{license.status}}     
       </h4>
+      <span v-else class="status-error">לא נמצא רישיון נהיגה</span>
       </v-row>
       <v-row>
-      <b class="date text-center" >
+      <b class="date text-center" v-if="this.license">
       <br>
       תאריך
       </b>
@@ -28,7 +29,7 @@
     <v-row >
       
         <v-col class="colStyle">
-          <h4 class="text-center">
+          <h4 class="text-center" v-if="this.license">
             סיום
             {{this.formmatDate(license.endingDate)}}
          </h4>
@@ -37,7 +38,7 @@
           width="100%"
         ></v-responsive>
         <v-col>
-         <h4 class="text-center begin">
+         <h4 class="text-center begin" v-if="this.license">
             התחלה
             {{this.formmatDate(license.startingDate)}}
          </h4>
@@ -52,7 +53,7 @@
 
   <br>
   <v-row class="justify-center">
-  <h2 class="justify-center">
+  <h2 class="justify-center" v-if="this.license">
   מספר רישיון
     <br>
     <div style="margin-left: 2vh">
@@ -116,5 +117,9 @@ export default {
 
 .begin {
   margin-left: 55px;
+}
+
+.status-error {
+  margin-left: 75px;
 }
 </style>
