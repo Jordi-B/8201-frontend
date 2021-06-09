@@ -85,7 +85,7 @@ import api from "../api/api";
 export default {
     data () {
         return { 
-            suspectDetails : {}
+            suspectDetails : {person: { phoneNumber: '' }}
         }
     },
     async mounted() {

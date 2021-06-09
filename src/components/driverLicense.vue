@@ -26,26 +26,22 @@
       <v-container class=" ">
     <v-row >
       
-        <v-col :key="n" class="colStyle">
+        <v-col class="colStyle">
           <h4 class="text-center">
             סיום
             {{this.formmatDate(license.endingDate)}}
          </h4>
         </v-col>
         <v-responsive
-          v-if="n === 2"
-          :key="`width-${n}`"
           width="100%"
         ></v-responsive>
-        <v-col :key="n">
+        <v-col>
          <h4 class="text-center">
             התחלה
             {{this.formmatDate(license.startingDate)}}
          </h4>
         </v-col>
         <v-responsive
-          v-if="n === 2"
-          :key="`width-${n}`"
           width="100%"
         ></v-responsive>
        
@@ -94,7 +90,6 @@ export default {
   async mounted() {
     const response = await api.profile().getLicenseById(this.personId);
     this.license = response.data[0];
-    console.log(typeof this.license.endingDate);
     }
   }
 </script>
