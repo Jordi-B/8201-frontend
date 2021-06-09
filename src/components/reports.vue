@@ -1,6 +1,6 @@
 <template>
   <div class="driverLicense">
-  <v-card class="mx-auto rounded-card" >
+  <v-card class="rounded-card" >
     <v-card-title class="justify-center">
       <h1 class="justify-center">
  צווים ודוחות
@@ -69,6 +69,8 @@ export default {
 .v-card{
   background-color: #2A2B38;
   color:white;
+  height: 60vh;
+  width: 27.5vw;
 }
 .status{
     margin-top: 1vh;

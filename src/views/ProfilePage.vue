@@ -3,15 +3,16 @@
     <v-row>
         <person-details :personId="$route.params.id" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
     </v-row>
-    <v-row class="mt-3">
+    <v-row>
         <v-col cols="2">
         </v-col>
         <v-col
         cols="2">
             <titled-info bgColor="#2A2B38" amountColor="#FFAC04" :amount="posts" title="מספר פוסטים בשבוע אחרון"></titled-info>
+            <HeatMap class="heat-map"/>
         </v-col>
         <v-col cols="2">
-            <driver-license :personId="$route.params.id" ></driver-license>
+            <driver-license class="driver-license" :personId="$route.params.id" ></driver-license>
         </v-col>
         <v-col cols="4">
             <reports :personId="$route.params.id"></reports>
@@ -28,6 +29,7 @@ import TitledInfo from '../components/TitledInfo.vue';
 import Reports from "../components/reports.vue";
 import driverLicense from "../components/driverLicense.vue";
 import api from "../api/api";
+import HeatMap from '../components/HeatMap.vue';
 
 export default {
     name: 'ProfilePage',
@@ -35,7 +37,8 @@ export default {
         PersonDetails,
         TitledInfo,
         Reports,
-        driverLicense
+        driverLicense,
+        HeatMap
     },
     methods : {
       changeWantedState : function () {
@@ -58,5 +61,9 @@ export default {
 <style scoped>
 .row{
     padding: 10px
+}
+
+.heat-map {
+    margin-top: 3vw;
 }
 </style>

@@ -6,6 +6,7 @@
     style="color:white;"
     class="mx-auto rounded-card" 
     width="270"
+    height="580"
   >
     <v-card-title  class="justify-center">
       <h2 class="justify-center">
@@ -36,7 +37,7 @@
           width="100%"
         ></v-responsive>
         <v-col>
-         <h4 class="text-center">
+         <h4 class="text-center begin">
             התחלה
             {{this.formmatDate(license.startingDate)}}
          </h4>
@@ -111,5 +112,9 @@ export default {
 .colStyleDate{
     margin-left: 4vh;
     margin-bottom: 10vh;
+}
+
+.begin {
+  margin-left: 55px;
 }
 </style>

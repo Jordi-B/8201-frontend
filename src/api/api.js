@@ -19,6 +19,9 @@ export default {
             },
             editWord: async (wordsToReplace) => {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/replace', wordsToReplace);
+            },
+            postsAmount: async(profileId) => {
+                return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/posts/counts28/${profileId}`);
             }
         }
     },
