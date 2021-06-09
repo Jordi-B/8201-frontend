@@ -3,7 +3,7 @@
         <v-row>
             <v-col sm="4"></v-col>
             <v-col sm="2.5">
-                <users-list title="מנהלים" :listItems="allManagers"></users-list>           
+                <users-list title="מנהלים" :isManager=true :listItems="allManagers"></users-list>           
             </v-col>
             <v-col sm="2.5">
                 <users-list title="משתמשים" :listItems="allUsers"></users-list>

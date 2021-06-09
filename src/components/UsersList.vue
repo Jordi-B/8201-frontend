@@ -14,7 +14,7 @@
     width="500"
     >
     <template v-slot:activator="{ on }">
-    <v-btn class="new-item-button" v-on="on" v-if="true" color="purple" icon outlined depressed fab x-small dark>
+    <v-btn class="new-item-button" v-on="on" v-if="$store.state.isManager" color="purple" icon outlined depressed fab x-small dark>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     </template>
@@ -51,7 +51,7 @@
     </user-item>
     <span class="no-words" v-if="filteredWords.length === 0">אין משתמשים</span>
     <div v-for="(user, index) in filteredWords" :key="index">
-      <user-item :title="user" @delete="deleteUser(user.username)" />
+      <user-item :title="user" :editable="$store.state.isManager" @delete="deleteUser(user.username)" />
     </div>
     </v-card>
 </template>
@@ -77,6 +77,10 @@ export default {
         listItems: {
             type: Array,
             required: true
+        },
+        isManager: {
+            type: Boolean, 
+            default: false
         }
     },
     data() {
@@ -101,7 +105,12 @@ export default {
                     this.alreadyExists = true;
                 } else {
                     this.listItems.push({username: this.username});
-                    await api.permissions().addNewUser(this.username, this.password);
+                    if(this.isManager === true) {
+                        await api.permissions().addNewManager(this.username, this.password);
+                    }
+                    else {
+                        await api.permissions().addNewUser(this.username, this.password);
+                    }
                     this.username = '';
                     this.password = '';
                     this.alreadyExists = false;

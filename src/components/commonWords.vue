@@ -43,7 +43,7 @@ export default {
         const response = await api.lists().wordsList();
         this.isLoading = false;
         const words = response.data;
-        this.commonWords = words.filter(word => word.percentageOfPosts > 0).sort((first, second) => first.counter - second.counter);
+        this.commonWords = words.filter(word => word.percentageOfPosts > 0).sort((first, second) => second.counter - first.counter);
     }
 }
 </script>

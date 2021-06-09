@@ -1,6 +1,9 @@
 import axios from 'axios';
 const BASE_URL = 'http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz';
 // const PROD_SERVER = 'http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz';
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
+
 
 export default {
     lists() {
@@ -68,11 +71,16 @@ export default {
                 return await axios.get('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/managers/false')
             },
             addNewUser: async (username, password) => {
-                return await axios.post("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/add",{username, password})
+                return await axios.post("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/add",{username, password});
+            },
+            addNewManager: async (username, password) => {
+                return await axios.post("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/add/manager", {username, password});
             },
             deleteUser: async (userName) => {
-                return await axios.delete("",{userName})
+                return await axios.delete("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users",{userName})
             }
         }
     }
 }
+
+export { axios };

@@ -40,6 +40,7 @@
 <script>
 import { mapActions } from 'vuex'
 import api from '../api/api';
+import { axios } from '../api/api';
 export default {
   data() {
     return {
@@ -53,8 +54,9 @@ export default {
     async logIn() {
       try {
          const response = await api.profile().logIn(this.username, this.password);
-         const { manager } = response.data;
+         const { manager, jwttoken } = response.data;
          this.wrongDetails = false;
+         axios.defaults.headers.common['token'] = jwttoken;
          this.setIsLoggedIn(true);
          this.setIsManager(manager);
       } catch (err) {
