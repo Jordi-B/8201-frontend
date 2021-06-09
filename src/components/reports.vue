@@ -1,98 +1,66 @@
 <template>
   <div class="driverLicense">
-    <template  >
-  <v-card class="mx-auto" max-width="344" >
-    <v-card-title  class="justify-center">
+  <v-card class="mx-auto rounded-card" >
+    <v-card-title class="justify-center">
       <h1 class="justify-center">
  צווים ודוחות
       </h1>
       </v-card-title>
-       <v-container>
-    <v-row no-gutters >
-      <template v-for="n in reportsList.length -1">
-        <v-col :key="n">
-          <v-card
-            class="pa-2" 
-            
-            
-          >
-           <v-row no-gutters>
-      <v-col>
-        <v-card
+       <v-container class="text-right">
+    <v-row v-for="element in reportsList" :key="element.id">
+      
+        <v-col>
+          <h4>
+            סוף תוקף
+          </h4>
+          <div>
+            {{formatDate(element.endingDate)}}
+          </div>
+        </v-col> 
         
-          class="pa-2"
-          outlined
-          tile
-        >
-        <h4 >
-             סוף תוקף
-             </h4>
-             <div>
-          {{reportsList[n].ending_date}}
+        <v-col>
+          <h4>
+            תחילת תוקף
+          </h4 >
+          <div>
+            {{formatDate(element.startingDate)}}
           </div>
-          
-        </v-card>
-
-      </v-col >
-      <v-col order="12">
-        <v-card
-          class="pa-2"  
-          outlined
-          tile
-        >
-        <h3 >
-          {{reportsList[n].permition_desc}}
-          </h3>
-        </v-card>
-      </v-col>
-      <v-col >
-        <v-card
-          class=" pa-2"
-          outlined
-          tile
-        >
-        <h4>
-        תחילת תוקף
-        </h4 >
-        <div>
-          {{reportsList[n].starting_date}}
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-          </v-card>
         </v-col>
-        <v-responsive
-          v-if="n === n"
-          :key="`width-${n}`"
-          width="100%"
-        ></v-responsive>
-      </template>
+        <v-col>
+          <h3 >
+          {{element.permissionDesc}}
+          </h3>
+        </v-col>
     </v-row>
   </v-container>
-     
-
   </v-card>
-</template>
   </div>
 </template>
+
 <script>
+import api from "../api/api";
+
 export default {
-  name: 'driverLicense',
   data () {
     return {
-       
-        startDate: "10\\2\\2001",
-        endDate:"10\\2\\2001" ,
-        reportType:"",
-        reportsList: [{},{ starting_date: "10\\2\\2001" , ending_date: "10\\2\\2001", permition_desc: "דוח תנועה"  
-        },
-        { starting_date: "10\\2\\2002" , ending_date: "10\\2\\2002", permition_desc: "דוח רעש"  
-        },
-        { starting_date: "10\\2\\2003" , ending_date: "10\\2\\2003", permition_desc: "מעבר חצייה"
-        }]
-
+      reportsList: []
     }
+  },
+  props: {
+    personId: {
+      type: String,
+      required: true    
+    }
+  },
+  methods : {
+    formatDate : function (date) {
+      const newDate = new Date(date)
+      return (newDate.toLocaleDateString('he-IL'))
+    }
+  },
+  async mounted() {
+    const response = await api.profile().getPermissionsById(this.personId);
+    this.reportsList = response.data;
   }
 }
 </script>
@@ -111,6 +79,9 @@ export default {
 }
 .colStyle{
     margin-left: 7vh
+}
+.rounded-card{
+    border-radius:10px;
 }
 .colStyleDate{
     margin-left: 4vh;

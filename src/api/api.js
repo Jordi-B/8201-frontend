@@ -21,5 +21,21 @@ export default {
                 return await axios.post('http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/words/replace', wordsToReplace);
             }
         }
+    },
+    profile() {
+        return {
+            getLicenseById : async (id) => {
+                return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/licenses/${id}`)
+            },
+            getNumOfPostsById : async (id) => {
+                return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/posts/person/count/${id}`)
+            },
+            getProfileById : async (id) => {
+                return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/suspects/suspect/${id}`)
+            },
+            getPermissionsById : async (id) => {
+                return await axios.get(`http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/permissions/${id}`)
+            }
+        }
     }
 }

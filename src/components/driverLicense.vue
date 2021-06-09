@@ -4,8 +4,8 @@
   <v-card
     color="#2A2B38"
     style="color:white;"
-    class="mx-auto" 
-    max-width="344"
+    class="mx-auto rounded-card" 
+    width="270"
   >
     <v-card-title  class="justify-center">
       <h2 class="justify-center">
@@ -14,7 +14,7 @@
       </v-card-title>
       <v-row>
       <h4 class="status" >
-        סטטוס {{status}}     
+        סטטוס {{license.status}}     
       </h4>
       </v-row>
       <v-row>
@@ -29,8 +29,7 @@
         <v-col :key="n" class="colStyle">
           <h4 class="text-center">
             סיום
-            {{endDate
-            }}
+            {{this.formmatDate(license.endingDate)}}
          </h4>
         </v-col>
         <v-responsive
@@ -41,7 +40,7 @@
         <v-col :key="n">
          <h4 class="text-center">
             התחלה
-            {{startDate}}
+            {{this.formmatDate(license.startingDate)}}
          </h4>
         </v-col>
         <v-responsive
@@ -60,7 +59,7 @@
   מספר רישיון
     <br>
     <div style="margin-left: 2vh">
-  {{licenseNumber}}
+  {{license.licenseNumber}}
   </div>
   </h2>
   </v-row>
@@ -71,25 +70,42 @@
   </div>
 </template>
 <script>
+import api from '../api/api';
+
 export default {
   name: 'driverLicense',
+  props: {
+    personId: {
+      type: String,
+      required: true
+    }
+  },
+  methods : {
+    formmatDate : function (date) {
+      const newDate = new Date(date)
+      return (newDate.toLocaleDateString('he-IL'))
+    }
+  },
   data () {
     return {
-        status: "33233",
-        startDate: "10\\2\\2001",
-        endDate:"10\\2\\2001" ,
-        licenseNumber: "000000", 
+      license : {} 
+    }
+  },
+  async mounted() {
+    const response = await api.profile().getLicenseById(this.personId);
+    this.license = response.data[0];
+    console.log(typeof this.license.endingDate);
     }
   }
-}
 </script>
-.mx-auto{
-    
-}
+
 <style scoped>
 .status{
     margin-top: 1vh;
     margin-left: 23vh ;
+}
+.rounded-card{
+    border-radius:10px;
 }
 .date{
     margin-left: 17vh;
