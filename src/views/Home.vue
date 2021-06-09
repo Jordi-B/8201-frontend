@@ -4,10 +4,10 @@
         <v-spacer/>
         <v-col md="7">
         <v-row class="top-container">
-            <TitledInfo bgColor="#2e303f" amountColor="#2dc653" :amount="57" title="חשודים"></TitledInfo>
-            <TitledInfo bgColor="#2e303f" amountColor="#cbc0d3" :amount="34" title="מבוקשים"></TitledInfo>
-            <TitledInfo bgColor="#2e303f" amountColor="#e5383b" :amount="7" title="נעצרו"></TitledInfo>
-            <TitledInfo bgColor="#2e303f" amountColor="#619cd4" :amount="343" title="פוסטים"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#e5383b" :amount="wantedNumber" title="מבוקשים"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#cbc0d3" :amount="suspectsNumber" title="חשודים"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#2dc653" :amount="releasedNumber" title="שוחררו"></TitledInfo>
+            <TitledInfo bgColor="#2e303f" amountColor="#619cd4" :amount="postsNumber" title="פוסטים"></TitledInfo>
         </v-row>
         </v-col>
         <v-spacer/>
@@ -30,6 +30,7 @@
 import PostMonitor from '../components/PostMonitor';
 import commonWords from '../components/commonWords';
 import TitledInfo from '../components/TitledInfo';
+import api from '../api/api';
 
 export default {
     name: 'Home',
@@ -39,7 +40,22 @@ export default {
         TitledInfo
     },
     data () {
-        return {}
+        return {
+            wantedNumber: 0,
+            suspectsNumber: 0,
+            releasedNumber: 0,
+            postsNumber: 0
+        }
+    },
+    async mounted() {
+        let response = await api.lists().recentWanted();
+        this.wantedNumber = response.data.length;
+        response = await api.lists().recentSuspects();
+        this.suspectsNumber = response.data.length;
+        response = await api.lists().recentReleased();
+        this.releasedNumber = response.data.length;
+        response = await api.lists().recentPosts();
+        this.postsNumber = response.data.length;
     }
 }
 </script>
