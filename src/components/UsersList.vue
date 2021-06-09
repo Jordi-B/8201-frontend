@@ -97,10 +97,10 @@ export default {
     methods: {
         async addNewUser() {
             try {
-                if(this.users.find(user => user.username === this.username)) {
+                if(this.listItems.find(user => user.username === this.username)) {
                     this.alreadyExists = true;
                 } else {
-                    this.users.push({ user: this.userName });
+                    this.listItems.push({username: this.username});
                     await api.permissions().addNewUser(this.username, this.password);
                     this.username = '';
                     this.password = '';
@@ -115,7 +115,7 @@ export default {
 
         async deleteUser(usernameToDelete) {
             try {
-                this.users = this.users.filter(user => user.username !== usernameToDelete);
+                this.listItems = this.listItems.filter(user => user.username !== usernameToDelete);
                 await api.permissions().deleteUser({usernameToDelete});
             } catch (err) {
                 alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
