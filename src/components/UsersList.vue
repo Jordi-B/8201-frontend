@@ -51,7 +51,7 @@
     </user-item>
     <span class="no-words" v-if="filteredWords.length === 0">אין משתמשים</span>
     <div v-for="(user, index) in filteredWords" :key="index">
-      <user-item :title="user" :editable="$store.state.isManager" @delete="deleteUser(user.username)" />
+      <user-item :title="user" :editable="$store.state.isManager" @delete="deleteUser(user)" />
     </div>
     </v-card>
 </template>
@@ -124,8 +124,10 @@ export default {
 
         async deleteUser(usernameToDelete) {
             try {
+                // this.listItems = this.listItems.filter(user => user.username !== usernameToDelete);
+                // console.log(this.listItems);
+                await api.permissions().deleteUser(usernameToDelete);
                 this.listItems = this.listItems.filter(user => user.username !== usernameToDelete);
-                await api.permissions().deleteUser({usernameToDelete});
             } catch (err) {
                 alert('ארעה שגיאה בשרת, נסה שוב מאוחר יותר');
             }

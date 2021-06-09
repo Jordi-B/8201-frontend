@@ -76,8 +76,8 @@ export default {
             addNewManager: async (username, password) => {
                 return await axios.post("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users/add/manager", {username, password});
             },
-            deleteUser: async (userName) => {
-                return await axios.delete("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users",{userName})
+            deleteUser: async (username) => {
+                return await axios.delete("http://intelligence-api-git-2-intelapp1.apps.openforce.openforce.biz/api/users", { data: { username: username } });
             }
         }
     }
