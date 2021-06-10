@@ -1,6 +1,7 @@
 <template>
 <v-container>
     <v-row>
+
         <v-col cols="2">
             <v-btn
                 @click="$router.go(-1)"
@@ -16,6 +17,7 @@
         <v-col cols="8">
             <person-details :personId="$route.params.id" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
         </v-col>
+
     </v-row>
     <v-row>
         <v-col cols="2" class="go-back">
@@ -64,11 +66,7 @@ export default {
         driverLicense,
         HeatMap
     },
-    methods : {
-      changeWantedState : function () {
-        this.person.wanted = !this.person.wanted
-      }
-    },
+    
     async mounted() {
         const response = await api.profile().getNumOfPostsById(this.$route.params.id);
         this.posts = response.data;

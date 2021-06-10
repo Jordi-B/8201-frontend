@@ -5,6 +5,12 @@
         <span class="head-title">8201</span><span> ניטור פעילות חשודה ברשתות חברתיות</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <h1 class="page-title" v-if="$route.name === 'Home' && $store.state.isLoggedIn">ניטור היממה האחרונה</h1>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
       <v-spacer></v-spacer>
       <h2 class="greeting" v-if="$store.state.isLoggedIn"> <span v-if="$store.state.isManager" class="permissions"> (הרשאות מנהל) </span>{{ `${this.$store.state.username} ,שלום` }}</h2>
       
@@ -71,6 +77,11 @@ export default {
 .container {  
   justify-content: space-around;
   align-items: center;
+
+}
+
+.page-title {
+  margin-left: 13vw;
 }
 
 .permissions {

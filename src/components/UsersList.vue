@@ -49,9 +49,18 @@
         v-model="search"
         ></v-text-field>
     </user-item>
-    <span class="no-words" v-if="filteredWords.length === 0">אין משתמשים</span>
+    <span class="no-words" v-if="filteredWords.length === 0 && !isLoading">אין משתמשים</span>
+    <v-progress-circular
+    indeterminate
+    color="blue"
+    class="load-bar"
+    v-if="isLoading"
+    size="80"
+    ></v-progress-circular>
+    <div v-if="!isLoading">
     <div v-for="(user, index) in filteredWords" :key="index">
       <user-item :title="user" :editable="$store.state.isManager" @delete="deleteUser(user)" />
+    </div>
     </div>
     </v-card>
 </template>
@@ -90,12 +99,17 @@ export default {
             username: '',
             password: '',
             alreadyExists: false,
+            isLoading: true
         }
     },
     computed: {
         filteredWords() {
             return this.listItems.map(user => user.username).filter(name => name.includes(this.search));
         }
+    },
+
+    created() {
+        setTimeout(() => this.isLoading = false, 1000);
     },
 
     methods: {
@@ -141,6 +155,10 @@ export default {
 
 * {
     font-family: 'Heebo', sans-serif !important;
+}
+
+.load-bar {
+    margin-top: 10vw;
 }
 
 .words-list-card {
