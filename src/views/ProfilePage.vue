@@ -1,10 +1,36 @@
 <template>
 <v-container>
     <v-row>
-        <person-details :personId="$route.params.id" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
+
+        <v-col cols="2">
+            <v-btn
+                @click="$router.go(-1)"
+                outlined
+                rounded
+                text            
+                class="infoText profileButotn ">
+                <v-icon dark left>
+                    mdi-arrow-left
+                </v-icon>
+            </v-btn>
+        </v-col>
+        <v-col cols="8">
+            <person-details :personId="$route.params.id" @change-wanted-state="changeWantedState" bgColor="#2A2B38" :wantedButtonStatus="wantedButton"></person-details>
+        </v-col>
+
     </v-row>
     <v-row>
-        <v-col cols="2">
+        <v-col cols="2" class="go-back">
+            <v-container>
+                <v-row>
+                    <v-col cols="1 ">
+                        
+                    </v-col>
+                    <v-col cols="11">
+                    </v-col>
+                </v-row>
+            </v-container>
+            
         </v-col>
         <v-col
         cols="2">
@@ -61,5 +87,13 @@ export default {
 
 .heat-map {
     margin-top: 3vw;
+}
+.profileButotn {
+    background-color: #6c757d;
+}
+
+.go-back {
+    
+    
 }
 </style>
